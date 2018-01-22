@@ -2,7 +2,8 @@ package com.base.MainEngine;
 
 import org.lwjgl.glfw.GLFW;
 
-import com.base.RenderingEngine.mesh.Triangle;
+import com.base.MainEngine.scene.Scene;
+import com.base.RenderingEngine.RenderingEngine;
 import com.base.opengl.GLFWManager;
 import com.base.opengl.OpenGLManager;
 import com.base.opengl.Window;
@@ -10,6 +11,8 @@ import com.base.opengl.Window;
 public class MainEngine
 {
 	private Window window;
+	private Scene scene;
+	private RenderingEngine renderEngine;
 
 	public MainEngine()
 	{
@@ -28,18 +31,27 @@ public class MainEngine
 
 	private void loop()
 	{
-		Triangle t = new Triangle();
+		float delta = 0;
 		while (!window.isCloseRequested())
 		{
+			float startTime = System.currentTimeMillis();
 			OpenGLManager.clearScreen();
+			
 			//TODO: update input engine? maybe
-			//TODO: update Objects
+			scene.input(delta, this);
+			
+			//update Objects(Scene)
+			scene.update(delta, this);
+			
 			//TODO: update Physics engine
 			//TODO: update Audio engine
-			//TODO: update rendering engine(Render)
-			t.draw();
-
+			
+			//update rendering engine(Render)
+			scene.render(this);
+			
 			window.swapBuffers();
+			
+			delta = System.currentTimeMillis() - startTime;
 		}
 	}
 
@@ -57,6 +69,8 @@ public class MainEngine
 		});
 
 		OpenGLManager.initOpenGL(window);
+		this.scene = new Scene();
+		this.renderEngine = new RenderingEngine();
 	}
 
 	private void cleanUp()
@@ -75,5 +89,15 @@ public class MainEngine
 	public Window getWindow()
 	{
 		return window;
+	}
+
+	public Scene getScene()
+	{
+		return scene;
+	}
+
+	public RenderingEngine getRenderEngine()
+	{
+		return renderEngine;
 	}
 }
