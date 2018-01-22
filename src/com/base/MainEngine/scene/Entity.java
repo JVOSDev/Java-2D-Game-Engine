@@ -1,15 +1,25 @@
 package com.base.MainEngine.scene;
 
 import com.base.MainEngine.MainEngine;
+import com.base.RenderingEngine.Material;
+import com.base.RenderingEngine.Texture;
 import com.base.RenderingEngine.mesh.Mesh;
 
 public class Entity extends Node
 {
-	public Mesh mesh;
+	protected Mesh mesh;
+	protected Material material;
 
+	public Entity(Mesh mesh, Material material)
+	{
+		this.mesh = mesh;
+		this.material = material;
+	}
+	
 	public Entity(Mesh mesh)
 	{
 		this.mesh = mesh;
+		this.material = new Material(new Texture("./res/textures/white.png"));
 	}
 
 	public Mesh getMesh()
@@ -39,4 +49,14 @@ public class Entity extends Node
 	{
 
 	}
+
+	public Material getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(Material material) {
+		this.material = material;
+	}
+	
+	
 }

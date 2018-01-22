@@ -2,6 +2,7 @@ package com.base.MainEngine;
 
 import org.lwjgl.glfw.GLFW;
 
+import com.base.MainEngine.scene.Camera;
 import com.base.MainEngine.scene.Scene;
 import com.base.RenderingEngine.RenderingEngine;
 import com.base.opengl.GLFWManager;
@@ -13,6 +14,7 @@ public class MainEngine
 	private Window window;
 	private Scene scene;
 	private RenderingEngine renderEngine;
+	private Camera camera;
 
 	public MainEngine()
 	{
@@ -34,7 +36,7 @@ public class MainEngine
 		float delta = 0;
 		while (!window.isCloseRequested())
 		{
-			float startTime = System.currentTimeMillis();
+			float startTime = System.nanoTime();
 			OpenGLManager.clearScreen();
 			
 			//TODO: update input engine? maybe
@@ -51,7 +53,7 @@ public class MainEngine
 			
 			window.swapBuffers();
 			
-			delta = System.currentTimeMillis() - startTime;
+			delta = (System.nanoTime() - startTime)/1000000000f;
 		}
 	}
 
@@ -70,7 +72,9 @@ public class MainEngine
 
 		OpenGLManager.initOpenGL(window);
 		this.scene = new Scene();
-		this.renderEngine = new RenderingEngine();
+		this.camera = new Camera(1,-1,-1,1,-10, 10);
+		scene.addNode(camera);
+		this.renderEngine = new RenderingEngine(camera);
 	}
 
 	private void cleanUp()

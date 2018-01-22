@@ -76,4 +76,9 @@ public class Transform
 		
 		return translationM.mul(rotationM.mul(scaleM));
 	}
+	
+	public void translate(Vector2f translation)
+	{
+		this.translation = this.translation.add(translation);
+	}
 }

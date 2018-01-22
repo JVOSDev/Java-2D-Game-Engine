@@ -86,5 +86,6 @@ dependencies {
     compile "org.lwjgl:lwjgl-yoga:$lwjglVersion:$lwjglNatives"
     compile "org.lwjgl:lwjgl-zstd:$lwjglVersion:$lwjglNatives"
     compile "org.joml:joml:${jomlVersion}"
+    compile "org.l33tlabs.twl:pngdecoder:1.0"
     
 }

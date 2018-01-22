@@ -6,12 +6,34 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 
 import com.base.RenderingEngine.mesh.Vertex;
 
 public class Utils
 {
+	public static FloatBuffer bufferMatrix4f(Matrix4f value)
+	{
+		FloatBuffer buffer = createFloatBuffer(4 * 4);
+
+		value.get(buffer);
+		//buffer.flip();
+
+		return buffer;
+	}
+	
+	public static FloatBuffer bufferMatrix3f(Matrix3f value)
+	{
+		FloatBuffer buffer = createFloatBuffer(3 * 3);
+
+		value.get(buffer);
+		//buffer.flip();
+
+		return buffer;
+	}
+	
 	public static FloatBuffer bufferVertices(Vertex[] vertices)
 	{
 		FloatBuffer buffer = createFloatBuffer(vertices.length * Vertex.SIZE);
