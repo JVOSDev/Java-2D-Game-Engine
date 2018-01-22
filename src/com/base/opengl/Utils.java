@@ -1,4 +1,4 @@
-package com.base.MainEngine;
+package com.base.opengl;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,15 +14,14 @@ public class Utils
 {
 	public static FloatBuffer bufferVertices(Vertex[] vertices)
 	{
-		FloatBuffer buffer = createFloatBuffer(vertices.length * 5);
+		FloatBuffer buffer = createFloatBuffer(vertices.length * Vertex.SIZE);
 
 		for(Vertex vertice : vertices)
 		{
-			buffer.put(vertice.getPos().getX());
-			buffer.put(vertice.getPos().getY());
-			buffer.put(0);		//Opengl only likes 3D data, 0 for the z component
-			buffer.put(vertice.getTexCoord().getX());
-			buffer.put(vertice.getTexCoord().getY());
+			buffer.put(vertice.getPos().x);
+			buffer.put(vertice.getPos().y);
+			buffer.put(vertice.getTexCoord().x);
+			buffer.put(vertice.getTexCoord().y);
 		}
 
 		buffer.flip();

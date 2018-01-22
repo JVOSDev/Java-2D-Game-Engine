@@ -6,12 +6,14 @@ import com.base.MainEngine.MainEngine;
 
 public abstract class Node
 {
-	public ArrayList<Node> children;
-	public Node parent = null;
+	protected ArrayList<Node> children;
+	protected Transform transform;
+	protected Node parent = null;
 
 	public Node()
 	{
 		this.children = new ArrayList<>();
+		this.transform = new Transform();
 	}
 
 	public void addChild(Node node)
@@ -23,6 +25,24 @@ public abstract class Node
 	public ArrayList<Node> getChildren()
 	{
 		return this.children;
+	}
+	
+	public Transform getTransform()
+	{
+		if(this.parent != null)
+		{
+			Transform combine = new Transform();
+
+			combine.setRotation(this.transform.getRotation()+ this.parent.getTransform().getRotation());
+			combine.setTranslation(this.transform.getTranslation().add(this.parent.getTransform().getTranslation()));
+			combine.setScale(this.transform.getScale().mul(this.parent.getTransform().getScale()));
+
+			return combine;
+		}
+		else
+		{
+			return this.transform;
+		}
 	}
 
 	public Node getParent()

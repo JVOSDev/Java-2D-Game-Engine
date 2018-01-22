@@ -5,7 +5,7 @@ import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
 
-import com.base.MainEngine.Utils;
+import com.base.opengl.Utils;
 
 public abstract class Mesh
 {
@@ -69,8 +69,8 @@ public abstract class Mesh
 		glBindBuffer(GL_ARRAY_BUFFER, this.vbo);
 		glBufferData(GL_ARRAY_BUFFER, Utils.bufferVertices(vertices), GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, false, 20, 0);
-		glVertexAttribPointer(1, 2, GL_FLOAT, false, 20, 12);
+		glVertexAttribPointer(0, 2, GL_FLOAT, false, 16, 0);
+		glVertexAttribPointer(1, 2, GL_FLOAT, false, 16, 8);
 
 		this.size = indices.length;
 

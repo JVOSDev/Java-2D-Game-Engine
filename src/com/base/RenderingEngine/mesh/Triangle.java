@@ -1,6 +1,6 @@
 package com.base.RenderingEngine.mesh;
 
-import com.base.math.Vector2f;
+import org.joml.Vector2f;
 
 public class Triangle extends Mesh
 {

@@ -17,9 +17,13 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 project.ext.lwjglVersion = "3.1.5"
+project.ext.jomlVersion = "1.9.7"
 
 repositories {
     mavenCentral()
+    maven {
+    url "https://oss.sonatype.org/content/repositories/snapshots/"
+  }
 }
 
 dependencies {
@@ -81,4 +85,6 @@ dependencies {
     compile "org.lwjgl:lwjgl-xxhash:$lwjglVersion:$lwjglNatives"
     compile "org.lwjgl:lwjgl-yoga:$lwjglVersion:$lwjglNatives"
     compile "org.lwjgl:lwjgl-zstd:$lwjglVersion:$lwjglNatives"
+    compile "org.joml:joml:${jomlVersion}"
+    
 }
