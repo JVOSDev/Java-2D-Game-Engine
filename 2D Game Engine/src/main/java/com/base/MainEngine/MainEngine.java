@@ -1,7 +1,11 @@
 package com.base.MainEngine;
 
-import com.base.opengl.*;
-import org.lwjgl.glfw.*;
+import org.lwjgl.glfw.GLFW;
+
+import com.base.RenderingEngine.mesh.Triangle;
+import com.base.opengl.GLFWManager;
+import com.base.opengl.OpenGLManager;
+import com.base.opengl.Window;
 
 public class MainEngine
 {
@@ -24,6 +28,7 @@ public class MainEngine
 
 	private void loop()
 	{
+		Triangle t = new Triangle();
 		while (!window.isCloseRequested())
 		{
 			OpenGLManager.clearScreen();
@@ -32,6 +37,7 @@ public class MainEngine
 			//TODO: update Physics engine
 			//TODO: update Audio engine
 			//TODO: update rendering engine(Render)
+			t.draw();
 
 			window.swapBuffers();
 		}
