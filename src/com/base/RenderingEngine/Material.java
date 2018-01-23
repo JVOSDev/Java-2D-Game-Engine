@@ -5,7 +5,7 @@ import org.joml.Vector3f;
 public class Material
 {
 	private Vector3f baseColor;
-	private Texture texture;
+	private Texture diffTexture;
 
 	public Material(Texture texture)
 	{
@@ -15,7 +15,7 @@ public class Material
 	public Material(Vector3f baseColor, Texture texture)
 	{
 		this.baseColor = baseColor;
-		this.texture = texture;
+		this.diffTexture = texture;
 	}
 
 	public Vector3f getBaseColor()
@@ -25,7 +25,7 @@ public class Material
 
 	public Texture getTexture()
 	{
-		return this.texture;
+		return this.diffTexture;
 	}
 
 	public void setBaseColor(Vector3f baseColor)
@@ -35,6 +35,6 @@ public class Material
 
 	public void setTexture(Texture texture)
 	{
-		this.texture = texture;
+		this.diffTexture = texture;
 	}
 }

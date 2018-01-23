@@ -19,7 +19,7 @@ public class Entity extends Node
 	public Entity(Mesh mesh)
 	{
 		this.mesh = mesh;
-		this.material = new Material(new Texture("./res/textures/base.png"));
+		this.material = new Material(new Texture("./res/textures/base.png", 0));
 	}
 
 	public Mesh getMesh()

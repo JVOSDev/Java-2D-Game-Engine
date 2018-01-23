@@ -32,10 +32,10 @@ public class Rectangle extends Mesh
 		float halfXLength = xLength / 2f;
 		float halfYLength = yLength / 2f;
 		
-		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-halfXLength,halfYLength)),
-										 new Vertex(new Vector2f(-halfXLength,-halfYLength)),
-										 new Vertex(new Vector2f(halfXLength,-halfYLength)),
-										 new Vertex(new Vector2f(halfXLength,halfYLength))}, new int[]{0,1,2,0,2,3});
+		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-halfXLength,halfYLength),new Vector2f(0,yLength)),
+										 new Vertex(new Vector2f(-halfXLength,-halfYLength),new Vector2f(0,0)),
+										 new Vertex(new Vector2f(halfXLength,-halfYLength),new Vector2f(xLength,0)),
+										 new Vertex(new Vector2f(halfXLength,halfYLength),new Vector2f(xLength,yLength))}, new int[]{0,1,2,0,2,3});
 	}
 
 }

@@ -16,9 +16,11 @@ import de.matthiasmann.twl.utils.PNGDecoder.Format;
 public class Texture
 {
 	private int id;
+	private int location;
 
-	public Texture(String filename)
+	public Texture(String filename, int location)
 	{
+		this.location = location;
 		PNGDecoder decoder = null;
 		try
 		{
@@ -44,10 +46,10 @@ public class Texture
 			System.exit(1);
 		}
 	}
-
+	
 	public void bind()
 	{
-		GL13.glActiveTexture(GL13.GL_TEXTURE0);
+		GL13.glActiveTexture(GL13.GL_TEXTURE0 + location);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.id);
 	}
 
