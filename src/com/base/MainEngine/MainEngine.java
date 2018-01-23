@@ -35,7 +35,9 @@ public class MainEngine
 	private Camera camera;
 
 	/**
-	 * Instantiates a new main engine.
+	 * Instantiates a new main engine.\
+	 * The main engine controls all of the other parts of the gameengine. It loads the audio, physics and rendering engine
+	 * as well as the the scene graph.
 	 */
 	public MainEngine()
 	{
@@ -51,7 +53,7 @@ public class MainEngine
 	}
 
 	/**
-	 * Stops the engine.
+	 * Stops the engine. Runs the clean up procedure for the engine.
 	 */
 	public void stop()
 	{
@@ -121,6 +123,9 @@ public class MainEngine
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#finalize()
+	 */
+	/**
+	 * 
 	 */
 	@Override
 	protected void finalize() throws Throwable

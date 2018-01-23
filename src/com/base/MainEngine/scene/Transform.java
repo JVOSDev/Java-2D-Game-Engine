@@ -1,6 +1,6 @@
 package com.base.MainEngine.scene;
 
-import org.joml.Matrix3f;
+import org.joml.Matrix3x2f;
 import org.joml.Vector2f;
 
 // TODO: Auto-generated Javadoc
@@ -116,20 +116,9 @@ public class Transform
 	 * @return the entire transform matrix
 	 */
 	
-	public Matrix3f getTransformMatrix()
+	public Matrix3x2f getTransformMatrix()
 	{
-		Matrix3f translationM = new Matrix3f().identity();
-		Matrix3f rotationM = new Matrix3f().identity();
-		Matrix3f scaleM = new Matrix3f().identity();
-		
-		translationM.m20 = translation.x;
-		translationM.m21 = translation.y;
-		
-		rotationM.rotateZ(rotation);
-		
-		scaleM.scale(scale.x, scale.y, 1);
-		
-		return translationM.mul(rotationM.mul(scaleM));
+		return new Matrix3x2f().translate(translation).rotate(rotation).scale(scale.x, scale.y);
 	}
 	
 	/**

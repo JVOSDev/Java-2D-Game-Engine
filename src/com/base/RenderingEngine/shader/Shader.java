@@ -2,7 +2,7 @@ package com.base.RenderingEngine.shader;
 
 import java.util.HashMap;
 
-import org.joml.Matrix3f;
+import org.joml.Matrix3x2f;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -126,7 +126,7 @@ public class Shader
 	 */
 	public void updateTransform(Transform transform)
 	{
-		this.updateUniformMatrix3f(transform.getTransformMatrix(), TRANSFORM_MATRIX);
+		this.updateUniformMatrix4f(transform.getTransformMatrix(), TRANSFORM_MATRIX);
 	}
 	
 	/**
@@ -145,9 +145,10 @@ public class Shader
 	 * @param mat the matrix
 	 * @param uniform the uniform name
 	 */
-	public void updateUniformMatrix3f(Matrix3f mat, String uniform)
+	public void updateUniformMatrix4f(Matrix3x2f mat, String uniform)
 	{
-		GL20.glUniformMatrix3fv(this.uniformLocations.get(uniform), true, Utils.bufferMatrix3f(mat));
+		Utils.createFloatBuffer(4*4);
+		GL20.glUniformMatrix4fv(this.uniformLocations.get(uniform), true, mat.get4x4(Utils.createFloatBuffer(4*4)));
 	}
 	
 	/**
