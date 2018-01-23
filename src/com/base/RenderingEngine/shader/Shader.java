@@ -16,15 +16,34 @@ import com.base.opengl.Utils;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Shader.
+ */
 public class Shader
 {
+	
+	/** The Constant MATERIAL_COLOR. */
 	public static final String MATERIAL_COLOR = "baseColor";
+	
+	/** The Constant TRANSFORM_MATRIX. */
 	public static final String TRANSFORM_MATRIX = "transformM";
+	
+	/** The Constant PROJECTION_MATRIX. */
 	public static final String PROJECTION_MATRIX = "projectionM";
 
+	/** The program. */
 	private int program;
+	
+	/** The uniform locations. */
 	private HashMap<String, Integer> uniformLocations;
 
+	/**
+	 * Instantiates a new shader.
+	 *
+	 * @param vertexFilename the vertex shader filename
+	 * @param fragFilename the fragment shader filename
+	 */
 	public Shader(String vertexFilename, String fragFilename)
 	{
 		this.uniformLocations = new HashMap<>();
@@ -46,6 +65,11 @@ public class Shader
 		this.addUniform(PROJECTION_MATRIX);
 	}
 
+	/**
+	 * Adds the uniform to the shader by name
+	 *
+	 * @param name the name of the uniform
+	 */
 	public void addUniform(String name)
 	{
 		int uniformLocation = GL20.glGetUniformLocation(this.program, name);
@@ -60,57 +84,108 @@ public class Shader
 		this.uniformLocations.put(name, uniformLocation);
 	}
 
+	/**
+	 * Bind the shader program
+	 */
 	public void bind()
 	{
 		GL20.glUseProgram(this.program);
 	}
 
+	/**
+	 * Destroys the shader
+	 */
 	public void destroy()
 	{
 		GL15.glDeleteBuffers(this.program);
 	}
 
+	/**
+	 * Unbinds the shader program
+	 */
 	public void unbind()
 	{
 		GL20.glUseProgram(0);
 	}
 
+	/**
+	 * Updatest the material.
+	 *
+	 * @param material the material to be updated
+	 */
 	public void updateMaterial(Material material)
 	{
 		this.updateUniformVector3f(material.getBaseColor(), MATERIAL_COLOR);
 		material.getTexture().bind();
 	}
 
+	/**
+	 * Updates the transform
+	 *
+	 * @param transform the transform
+	 */
 	public void updateTransform(Transform transform)
 	{
 		this.updateUniformMatrix3f(transform.getTransformMatrix(), TRANSFORM_MATRIX);
 	}
 	
+	/**
+	 * Updates the projection matrix.
+	 *
+	 * @param camera the camera
+	 */
 	public void updateProjection(Camera camera)
 	{
 		this.updateUniformMatrix4f(camera.getProjectionM(), PROJECTION_MATRIX);
 	}
 
+	/**
+	 * Updates uniform matrix3f.
+	 *
+	 * @param mat the matrix
+	 * @param uniform the uniform name
+	 */
 	public void updateUniformMatrix3f(Matrix3f mat, String uniform)
 	{
 		GL20.glUniformMatrix3fv(this.uniformLocations.get(uniform), true, Utils.bufferMatrix3f(mat));
 	}
 	
+	/**
+	 * Updates uniform matrix4f.
+	 *
+	 * @param mat the matrix
+	 * @param uniform the uniform name
+	 */
 	public void updateUniformMatrix4f(Matrix4f mat, String uniform)
 	{
 		GL20.glUniformMatrix4fv(this.uniformLocations.get(uniform), true, Utils.bufferMatrix4f(mat));
 	}
 
+	/**
+	 * Update uniform vector3f.
+	 *
+	 * @param vec the vector
+	 * @param uniform the uniform name
+	 */
 	public void updateUniformVector3f(Vector3f vec, String uniform)
 	{
 		GL20.glUniform3f(this.uniformLocations.get(uniform), vec.x, vec.y, vec.z);
 	}
 	
+	/**
+	 * Update uniform vector2f.
+	 *
+	 * @param vec the vector
+	 * @param uniform the uniform name
+	 */
 	public void updateUniformVector2f(Vector2f vec, String uniform)
 	{
 		GL20.glUniform2f(this.uniformLocations.get(uniform), vec.x, vec.y);
 	}
 
+	/**
+	 * Compiles the shader program
+	 */
 	private void compile()
 	{
 		GL20.glLinkProgram(this.program);
@@ -130,6 +205,12 @@ public class Shader
 		}
 	}
 
+	/**
+	 * Loads the shader program from a text file
+	 *
+	 * @param type the type
+	 * @param source the source text
+	 */
 	private void loadShader(int type, String source)
 	{
 		int shader = GL20.glCreateShader(type);
@@ -152,6 +233,9 @@ public class Shader
 		GL20.glAttachShader(this.program, shader);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
 	@Override
 	protected void finalize()
 	{

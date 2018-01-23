@@ -2,13 +2,26 @@ package com.base.opengl;
 
 import org.lwjgl.opengl.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OpenGLManager.
+ */
 public class OpenGLManager
 {
+	
+	/**
+	 * Clears the screen.
+	 */
 	public static void clearScreen()
 	{
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 	}
 
+	/**
+	 * Initializes OpenGL to the current window;
+	 *
+	 * @param window the current window
+	 */
 	public static void initOpenGL(Window window)
 	{
 		window.makeWindowCurrent();
@@ -23,6 +36,13 @@ public class OpenGLManager
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 	}
 
+	/**
+	 * Sets the color the screen clears to
+	 *
+	 * @param r the red component of the color
+	 * @param g the green component of the color
+	 * @param b the blue component of the color
+	 */
 	public static void setClearColor(float r, float g, float b)
 	{
 		GL11.glClearColor(r, g, b, 1f);

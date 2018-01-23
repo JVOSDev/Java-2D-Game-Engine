@@ -7,13 +7,28 @@ import static org.lwjgl.opengl.GL30.*;
 
 import com.base.opengl.Utils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Mesh.
+ */
 public abstract class Mesh
 {
+	
+	/** The pointer to the vertex array object. */
 	protected int vao;
+	
+	/** The pointer to the vertex buffer object. */
 	protected int vbo;
+	
+	/** The pointer to the index buffer object. */
 	protected int ibo;
+	
+	/** The size of the mesh data. */
 	protected int size;
 	
+	/**
+	 * Inits the mesh pointers
+	 */
 	protected void init()
 	{
 		this.vao = glGenVertexArrays();
@@ -24,14 +39,19 @@ public abstract class Mesh
 		initVertices();
 	}
 	
-	protected abstract void initVertices();
-	/** Recomended implementation:
+	/**
+	 * Inits the vertices.
+	 * 
+	 *  Recomended implementation:
 	 * 
 	 *	A vertex array with vertex position data and an int array with the draw pattern
 	 * 	this.bufferVertices(Vertex[]..., int[]...);
-	 * 
 	 */
+	protected abstract void initVertices();
 	
+	/**
+	 * Destroys the mesh data
+	 */
 	public void destroy()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -42,11 +62,17 @@ public abstract class Mesh
 		glDeleteVertexArrays(this.vao);
 	}
 	
+	/**
+	 * Bind vertex array.
+	 */
 	public void bindVertexArray()
 	{
 		glBindVertexArray(this.vao);
 	}
 
+	/**
+	 * Draw.
+	 */
 	public void draw()
 	{
 		this.bindVertexArray();
@@ -62,6 +88,12 @@ public abstract class Mesh
 		this.unbindVertexArray();
 	}
 
+	/**
+	 * Buffer vertices.
+	 *
+	 * @param vertices the vertices
+	 * @param indices the indices
+	 */
 	protected void bufferVertices(Vertex[] vertices, int[] indices)
 	{
 		glBindVertexArray(this.vao);
@@ -82,11 +114,20 @@ public abstract class Mesh
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 	
+	/**
+	 * Unbind vertex array.
+	 */
 	public void unbindVertexArray()
 	{
 		glBindVertexArray(0);
 	}
 	
+	/**
+	 * Gen indices.
+	 *
+	 * @param length the length
+	 * @return the int[]
+	 */
 	protected static int[] genIndices(int length)
 	{
 		int[] inds = new int[length];
@@ -97,6 +138,9 @@ public abstract class Mesh
 		return inds;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
 	@Override
 	protected void finalize()
 	{

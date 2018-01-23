@@ -9,31 +9,58 @@ import com.base.opengl.GLFWManager;
 import com.base.opengl.OpenGLManager;
 import com.base.opengl.Window;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainEngine.
+ */
 public class MainEngine
 {
+	
+	/** The length. */
 	private int LENGTH = 1280;
+	
+	/** The width. */
 	private int WIDTH = 720;
 	
+	/** The window. */
 	private Window window;
+	
+	/** The scene. */
 	private Scene scene;
+	
+	/** The render engine. */
 	private RenderingEngine renderEngine;
+	
+	/** The camera. */
 	private Camera camera;
 
+	/**
+	 * Instantiates a new main engine.
+	 */
 	public MainEngine()
 	{
 		init();
 	}
 
+	/**
+	 * Starts the engine.
+	 */
 	public void start()
 	{
 		loop();
 	}
 
+	/**
+	 * Stops the engine.
+	 */
 	public void stop()
 	{
 		cleanUp();
 	}
 
+	/**
+	 * The main game loop.
+	 */
 	private void loop()
 	{
 		float delta = 0;
@@ -60,6 +87,9 @@ public class MainEngine
 		}
 	}
 
+	/**
+	 * Inits the engine with a window, opengl, a scene and a camera.
+	 */
 	private void init()
 	{
 		GLFWManager.initGLFW();
@@ -80,12 +110,18 @@ public class MainEngine
 		this.renderEngine = new RenderingEngine(camera);
 	}
 
+	/**
+	 * Cleans up. Destroys all objects and pointers
+	 */
 	private void cleanUp()
 	{
 		window.destroy();
 		GLFWManager.destroyGLFW();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
 	@Override
 	protected void finalize() throws Throwable
 	{
@@ -93,16 +129,31 @@ public class MainEngine
 		cleanUp();
 	}
 
+	/**
+	 * Gets the window.
+	 *
+	 * @return the window
+	 */
 	public Window getWindow()
 	{
 		return window;
 	}
 
+	/**
+	 * Gets the scene.
+	 *
+	 * @return the scene
+	 */
 	public Scene getScene()
 	{
 		return scene;
 	}
 
+	/**
+	 * Gets the renderengine.
+	 *
+	 * @return the renderengine
+	 */
 	public RenderingEngine getRenderEngine()
 	{
 		return renderEngine;

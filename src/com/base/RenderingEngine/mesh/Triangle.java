@@ -2,13 +2,24 @@ package com.base.RenderingEngine.mesh;
 
 import org.joml.Vector2f;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Triangle.
+ */
 public class Triangle extends Mesh
 {
+	
+	/**
+	 * Instantiates a new triangle.
+	 */
 	public Triangle()
 	{
 		this.init();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.base.RenderingEngine.mesh.Mesh#initVertices()
+	 */
 	@Override
 	protected void initVertices()
 	{

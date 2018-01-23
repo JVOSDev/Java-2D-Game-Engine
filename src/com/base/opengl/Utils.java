@@ -12,8 +12,19 @@ import org.lwjgl.BufferUtils;
 
 import com.base.RenderingEngine.mesh.Vertex;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Utils.
+ */
 public class Utils
 {
+	
+	/**
+	 * Buffers a matrix4f for OpenGL.
+	 *
+	 * @param value the matrix
+	 * @return the float buffer of the matrix
+	 */
 	public static FloatBuffer bufferMatrix4f(Matrix4f value)
 	{
 		FloatBuffer buffer = createFloatBuffer(4 * 4);
@@ -24,6 +35,12 @@ public class Utils
 		return buffer;
 	}
 	
+	/**
+	 * Buffers a matrix3f for OpenGL.
+	 *
+	 * @param value the matrix
+	 * @return the float buffer of the matrix
+	 */
 	public static FloatBuffer bufferMatrix3f(Matrix3f value)
 	{
 		FloatBuffer buffer = createFloatBuffer(3 * 3);
@@ -34,6 +51,12 @@ public class Utils
 		return buffer;
 	}
 	
+	/**
+	 * Buffers vertices for OpenGL.
+	 *
+	 * @param vertices the vertices
+	 * @return the float buffer representation of the vertices
+	 */
 	public static FloatBuffer bufferVertices(Vertex[] vertices)
 	{
 		FloatBuffer buffer = createFloatBuffer(vertices.length * Vertex.SIZE);
@@ -51,6 +74,12 @@ public class Utils
 		return buffer;
 	}
 
+	/**
+	 * Buffers integers for OpenGL
+	 *
+	 * @param values the integer values
+	 * @return the buffered values
+	 */
 	public static IntBuffer createFlippedBuffer(int... values)
 	{
 		IntBuffer buffer = createIntBuffer(values.length);
@@ -60,16 +89,34 @@ public class Utils
 		return buffer;
 	}
 
+	/**
+	 * Creates a float buffer.
+	 *
+	 * @param size the size of the float buffer to be created
+	 * @return the created float buffer
+	 */
 	public static FloatBuffer createFloatBuffer(int size)
 	{
 		return BufferUtils.createFloatBuffer(size);
 	}
 
+	/**
+	 * Creates the int buffer.
+	 *
+	 * @param size the size
+	 * @return the int buffer
+	 */
 	public static IntBuffer createIntBuffer(int size)
 	{
 		return BufferUtils.createIntBuffer(size);
 	}
 
+	/**
+	 * Loads a text file.
+	 *
+	 * @param filename the filename of the text file
+	 * @return the string representation of the text
+	 */
 	public static String loadTextFile(String filename)
 	{
 		StringBuilder text = new StringBuilder();
@@ -96,6 +143,12 @@ public class Utils
 		return text.toString();
 	}
 
+	/**
+	 * Removes empty strings in a string array.
+	 *
+	 * @param data the string array
+	 * @return the cleaned string array
+	 */
 	public static String[] removeEmptyStrings(String[] data)
 	{
 		ArrayList<String> result = new ArrayList<>();
@@ -114,6 +167,12 @@ public class Utils
 		return res;
 	}
 
+	/**
+	 * Converts an Integer array to an int array
+	 *
+	 * @param data the Integer data
+	 * @return the int array
+	 */
 	public static int[] toIntArray(Integer[] data)
 	{
 		int[] result = new int[data.length];

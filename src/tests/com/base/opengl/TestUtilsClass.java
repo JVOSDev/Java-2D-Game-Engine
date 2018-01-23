@@ -6,8 +6,15 @@ import org.junit.Test;
 
 import com.base.opengl.Utils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestUtilsClass.
+ */
 public class TestUtilsClass {
 
+	/**
+	 * Test.
+	 */
 	@Test
 	public void test() 
 	{

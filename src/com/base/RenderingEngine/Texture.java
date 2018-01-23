@@ -13,11 +13,25 @@ import org.lwjgl.opengl.GL30;
 import de.matthiasmann.twl.utils.PNGDecoder;
 import de.matthiasmann.twl.utils.PNGDecoder.Format;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Texture.
+ */
 public class Texture
 {
+	
+	/** The id of the texture. */
 	private int id;
+	
+	/** The location of the texture object (eg. TEXTURE0, TEXTURE17). */
 	private int location;
 
+	/**
+	 * Instantiates a new texture.
+	 *
+	 * @param filename the filename of the texture image(PNG)
+	 * @param location the location for the texture
+	 */
 	public Texture(String filename, int location)
 	{
 		this.location = location;
@@ -47,22 +61,34 @@ public class Texture
 		}
 	}
 	
+	/**
+	 * Binds the texture to be used
+	 */
 	public void bind()
 	{
 		GL13.glActiveTexture(GL13.GL_TEXTURE0 + location);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.id);
 	}
 
+	/**
+	 * Destroys the texture data
+	 */
 	public void destroy()
 	{
 		GL15.glDeleteBuffers(this.id);
 	}
 
+	/**
+	 * Unbinds the texture
+	 */
 	public void unbind()
 	{
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
 	@Override
 	protected void finalize()
 	{

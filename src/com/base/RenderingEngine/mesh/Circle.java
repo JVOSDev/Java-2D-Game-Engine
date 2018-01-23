@@ -4,11 +4,25 @@ import java.util.Stack;
 
 import org.joml.Vector2f;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Circle.
+ */
 public class Circle extends Mesh
 {
+	
+	/** The radius. */
 	private float radius;
+	
+	/** The resolution. */
 	private int resolution;
 	
+	/**
+	 * Instantiates a new circle.
+	 *
+	 * @param radius the radius
+	 * @param resolution the resolution of the triangles
+	 */
 	public Circle(float radius, int resolution)
 	{
 		this.radius = radius;
@@ -16,6 +30,9 @@ public class Circle extends Mesh
 		this.init();
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.base.RenderingEngine.mesh.Mesh#initVertices()
+	 */
 	@Override
 	protected void initVertices() 
 	{
