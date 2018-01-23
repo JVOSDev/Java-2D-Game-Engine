@@ -53,7 +53,7 @@ public abstract class Mesh
 
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
-
+		
 		glDrawElements(GL_TRIANGLES, this.size, GL_UNSIGNED_INT, 0);
 		
 		glDisableVertexAttribArray(1);

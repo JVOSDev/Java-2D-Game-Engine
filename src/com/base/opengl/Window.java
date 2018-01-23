@@ -23,7 +23,6 @@ public class Window
 	public static Window createWindow(int width, int height, String title)
 	{
 		long windowId = GLFW.glfwCreateWindow(width, height, title, 0, 0);
-		GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_FALSE);
 		if (windowId == 0)
 		{
 			System.err.println("Error: Error in window creation");

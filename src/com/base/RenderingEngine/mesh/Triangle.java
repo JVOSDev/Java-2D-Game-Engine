@@ -14,7 +14,7 @@ public class Triangle extends Mesh
 	{
 		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-0.5f,-0.5f)),
 										 new Vertex(new Vector2f(0.5f,-0.5f)),
-										 new Vertex(new Vector2f(0,0.5f)),}, new int[]{0,1,2});
+										 new Vertex(new Vector2f(0,0.5f))}, new int[]{0,1,2});
 		
 	}
 }
