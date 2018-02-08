@@ -10,7 +10,7 @@ import com.base.MainEngine.MainEngine;
  */
 public class Scene
 {
-	
+
 	/** The root node. */
 	private Node root;
 
@@ -42,7 +42,8 @@ public class Scene
 	/**
 	 * Adds a node to the scene graph.
 	 *
-	 * @param node the node
+	 * @param node
+	 *            the node
 	 */
 	public void addNode(Node node)
 	{
@@ -52,8 +53,10 @@ public class Scene
 	/**
 	 * Inputs all nodes.
 	 *
-	 * @param delta the delta
-	 * @param engine the engine
+	 * @param delta
+	 *            the delta
+	 * @param engine
+	 *            the engine
 	 */
 	public void input(float delta, MainEngine engine)
 	{
@@ -63,7 +66,8 @@ public class Scene
 	/**
 	 * Render.
 	 *
-	 * @param engine the engine
+	 * @param engine
+	 *            the engine
 	 */
 	public void render(MainEngine engine)
 	{
@@ -73,14 +77,16 @@ public class Scene
 	/**
 	 * Update.
 	 *
-	 * @param delta the delta
-	 * @param engine the engine
+	 * @param delta
+	 *            the delta
+	 * @param engine
+	 *            the engine
 	 */
 	public void update(float delta, MainEngine engine)
 	{
 		this.getRoot().updateAll(delta, engine);
 	}
-	
+
 	/**
 	 * Gets the all nodes in the scene.
 	 *
@@ -104,7 +110,8 @@ public class Scene
 	/**
 	 * Sets the root node.
 	 *
-	 * @param root the new root
+	 * @param root
+	 *            the new root
 	 */
 	public void setRoot(Node root)
 	{

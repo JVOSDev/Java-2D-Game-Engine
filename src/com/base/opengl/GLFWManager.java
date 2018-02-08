@@ -8,7 +8,7 @@ import org.lwjgl.glfw.*;
  */
 public class GLFWManager
 {
-	
+
 	/**
 	 * Destroys GLFW data
 	 */
@@ -24,7 +24,7 @@ public class GLFWManager
 	public static void initGLFW()
 	{
 		GLFWErrorCallback.createPrint(System.err).set();
-		if (!GLFW.glfwInit())
+		if(!GLFW.glfwInit())
 		{
 			throw new IllegalStateException("Unable to initialize GLFW");
 		}

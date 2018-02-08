@@ -13,19 +13,19 @@ import com.base.opengl.Utils;
  */
 public abstract class Mesh
 {
-	
+
 	/** The pointer to the vertex array object. */
 	protected int vao;
-	
+
 	/** The pointer to the vertex buffer object. */
 	protected int vbo;
-	
+
 	/** The pointer to the index buffer object. */
 	protected int ibo;
-	
+
 	/** The size of the mesh data. */
 	protected int size;
-	
+
 	/**
 	 * Inits the mesh pointers
 	 */
@@ -38,17 +38,17 @@ public abstract class Mesh
 		this.ibo = glGenBuffers();
 		initVertices();
 	}
-	
+
 	/**
 	 * Inits the vertices.
 	 * 
-	 *  Recomended implementation:
+	 * Recomended implementation:
 	 * 
-	 *	A vertex array with vertex position data and an int array with the draw pattern
-	 * 	this.bufferVertices(Vertex[]..., int[]...);
+	 * A vertex array with vertex position data and an int array with the draw
+	 * pattern this.bufferVertices(Vertex[]..., int[]...);
 	 */
 	protected abstract void initVertices();
-	
+
 	/**
 	 * Destroys the mesh data
 	 */
@@ -61,7 +61,7 @@ public abstract class Mesh
 		glBindVertexArray(0);
 		glDeleteVertexArrays(this.vao);
 	}
-	
+
 	/**
 	 * Bind vertex array.
 	 */
@@ -79,9 +79,9 @@ public abstract class Mesh
 
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
-		
+
 		glDrawElements(GL_TRIANGLES, this.size, GL_UNSIGNED_INT, 0);
-		
+
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(0);
 
@@ -91,8 +91,10 @@ public abstract class Mesh
 	/**
 	 * Buffer vertices.
 	 *
-	 * @param vertices the vertices
-	 * @param indices the indices
+	 * @param vertices
+	 *            the vertices
+	 * @param indices
+	 *            the indices
 	 */
 	protected void bufferVertices(Vertex[] vertices, int[] indices)
 	{
@@ -113,7 +115,7 @@ public abstract class Mesh
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
-	
+
 	/**
 	 * Unbind vertex array.
 	 */
@@ -121,11 +123,12 @@ public abstract class Mesh
 	{
 		glBindVertexArray(0);
 	}
-	
+
 	/**
 	 * Gen indices.
 	 *
-	 * @param length the length
+	 * @param length
+	 *            the length
 	 * @return the int[]
 	 */
 	protected static int[] genIndices(int length)
@@ -137,8 +140,10 @@ public abstract class Mesh
 		}
 		return inds;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#finalize()
 	 */
 	@Override

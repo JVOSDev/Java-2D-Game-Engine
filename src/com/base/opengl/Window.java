@@ -11,15 +11,15 @@ import java.nio.*;
  */
 public class Window
 {
-	
+
 	/** The id pointer of the window. */
 	private long id;
 
 	/**
 	 * Instantiates a new window.
 	 *
-	 * @param id 
-	 * 				the id of the window
+	 * @param id
+	 *            the id of the window
 	 */
 	private Window(long id)
 	{
@@ -35,18 +35,18 @@ public class Window
 	/**
 	 * Creates a window.
 	 *
-	 * @param width 
-	 * 				the width of the window
-	 * @param height 
-	 * 				the height of the window
-	 * @param title 
-	 * 				the title of the window
+	 * @param width
+	 *            the width of the window
+	 * @param height
+	 *            the height of the window
+	 * @param title
+	 *            the title of the window
 	 * @return the window instance
 	 */
 	public static Window createWindow(int width, int height, String title)
 	{
 		long windowId = GLFW.glfwCreateWindow(width, height, title, 0, 0);
-		if (windowId == 0)
+		if(windowId == 0)
 		{
 			System.err.println("Error: Error in window creation");
 			new Exception().printStackTrace();
@@ -82,7 +82,7 @@ public class Window
 	{
 		int[] ret = new int[2];
 
-		try (MemoryStack stack = MemoryStack.stackPush())
+		try(MemoryStack stack = MemoryStack.stackPush())
 		{
 			IntBuffer width = stack.mallocInt(1);
 			IntBuffer height = stack.mallocInt(1);
@@ -106,8 +106,7 @@ public class Window
 	}
 
 	/**
-	 * Gets the id pointer of the window
-	 * For use with GLFW
+	 * Gets the id pointer of the window For use with GLFW
 	 *
 	 * @return the id
 	 */

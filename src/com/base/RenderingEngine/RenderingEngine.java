@@ -12,29 +12,32 @@ import com.base.RenderingEngine.shader.Shader;
  */
 public class RenderingEngine
 {
-	
+
 	/** The shader. */
 	private Shader shader;
-	
+
 	/** The camera. */
 	private Camera camera;
-	
+
 	/**
 	 * Instantiates a new rendering engine.
 	 *
-	 * @param camera the camera
+	 * @param camera
+	 *            the camera
 	 */
 	public RenderingEngine(Camera camera)
 	{
 		this.shader = new Shader("./res/Shaders/basicVertex.vs", "./res/Shaders/basicFragment.fs");
 		this.camera = camera;
 	}
-	
+
 	/**
 	 * Renders the entity.
 	 *
-	 * @param entity the entity to be rendered
-	 * @param engine the main engine
+	 * @param entity
+	 *            the entity to be rendered
+	 * @param engine
+	 *            the main engine
 	 */
 	public void renderEntity(Entity entity, MainEngine engine)
 	{

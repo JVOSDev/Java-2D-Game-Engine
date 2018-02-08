@@ -1,7 +1,12 @@
 package com.base.opengl;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -9,6 +14,7 @@ import java.util.ArrayList;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.openal.AL10;
 
 import com.base.RenderingEngine.mesh.Vertex;
 
@@ -18,11 +24,12 @@ import com.base.RenderingEngine.mesh.Vertex;
  */
 public class Utils
 {
-	
+
 	/**
 	 * Buffers a matrix4f for OpenGL.
 	 *
-	 * @param value the matrix
+	 * @param value
+	 *            the matrix
 	 * @return the float buffer of the matrix
 	 */
 	public static FloatBuffer bufferMatrix4f(Matrix4f value)
@@ -30,15 +37,16 @@ public class Utils
 		FloatBuffer buffer = createFloatBuffer(4 * 4);
 
 		value.get(buffer);
-		//buffer.flip();
+		// buffer.flip();
 
 		return buffer;
 	}
-	
+
 	/**
 	 * Buffers a matrix3f for OpenGL.
 	 *
-	 * @param value the matrix
+	 * @param value
+	 *            the matrix
 	 * @return the float buffer of the matrix
 	 */
 	public static FloatBuffer bufferMatrix3f(Matrix3f value)
@@ -46,15 +54,16 @@ public class Utils
 		FloatBuffer buffer = createFloatBuffer(3 * 3);
 
 		value.get(buffer);
-		//buffer.flip();
+		// buffer.flip();
 
 		return buffer;
 	}
-	
+
 	/**
 	 * Buffers vertices for OpenGL.
 	 *
-	 * @param vertices the vertices
+	 * @param vertices
+	 *            the vertices
 	 * @return the float buffer representation of the vertices
 	 */
 	public static FloatBuffer bufferVertices(Vertex[] vertices)
@@ -77,7 +86,8 @@ public class Utils
 	/**
 	 * Buffers integers for OpenGL
 	 *
-	 * @param values the integer values
+	 * @param values
+	 *            the integer values
 	 * @return the buffered values
 	 */
 	public static IntBuffer createFlippedBuffer(int... values)
@@ -92,7 +102,8 @@ public class Utils
 	/**
 	 * Creates a float buffer.
 	 *
-	 * @param size the size of the float buffer to be created
+	 * @param size
+	 *            the size of the float buffer to be created
 	 * @return the created float buffer
 	 */
 	public static FloatBuffer createFloatBuffer(int size)
@@ -103,7 +114,8 @@ public class Utils
 	/**
 	 * Creates the int buffer.
 	 *
-	 * @param size the size
+	 * @param size
+	 *            the size
 	 * @return the int buffer
 	 */
 	public static IntBuffer createIntBuffer(int size)
@@ -114,7 +126,8 @@ public class Utils
 	/**
 	 * Loads a text file.
 	 *
-	 * @param filename the filename of the text file
+	 * @param filename
+	 *            the filename of the text file
 	 * @return the string representation of the text
 	 */
 	public static String loadTextFile(String filename)
@@ -146,7 +159,8 @@ public class Utils
 	/**
 	 * Removes empty strings in a string array.
 	 *
-	 * @param data the string array
+	 * @param data
+	 *            the string array
 	 * @return the cleaned string array
 	 */
 	public static String[] removeEmptyStrings(String[] data)
@@ -170,7 +184,8 @@ public class Utils
 	/**
 	 * Converts an Integer array to an int array
 	 *
-	 * @param data the Integer data
+	 * @param data
+	 *            the Integer data
 	 * @return the int array
 	 */
 	public static int[] toIntArray(Integer[] data)
@@ -183,6 +198,35 @@ public class Utils
 		}
 
 		return result;
+	}
+
+	public static ByteBuffer fileToByteBuffer(String filename) throws IOException
+	{
+		int bufferSize = 1024;
+		FileInputStream inStream = new FileInputStream(new File(filename));
+		byte[] buffer = new byte[bufferSize];
+		ByteArrayOutputStream outStream = new ByteArrayOutputStream(bufferSize);
+		int read;
+		while(true)
+		{
+			read = inStream.read(buffer);
+			if(read == -1)
+				break;
+			outStream.write(buffer, 0, read);
+		}
+		inStream.close();
+		ByteBuffer byteData = ByteBuffer.wrap(outStream.toByteArray());
+		outStream.close();
+		return byteData;
+	}
+
+	public static void checkALError()
+	{
+		int err = AL10.alGetError();
+		if(err != AL10.AL_NO_ERROR)
+		{
+			throw new RuntimeException(AL10.alGetString(err));
+		}
 	}
 
 }

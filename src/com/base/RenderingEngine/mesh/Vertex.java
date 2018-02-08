@@ -8,20 +8,21 @@ import org.joml.Vector2f;
  */
 public class Vertex
 {
-	
+
 	/** The Constant SIZE. */
 	public static final int SIZE = 4;
 
 	/** The pos. */
 	private Vector2f pos;
-	
+
 	/** The texture coordinate. */
 	private Vector2f texCoord;
 
 	/**
 	 * Instantiates a new vertex.
 	 *
-	 * @param pos the position of the vertex
+	 * @param pos
+	 *            the position of the vertex
 	 */
 	public Vertex(Vector2f pos)
 	{
@@ -31,8 +32,10 @@ public class Vertex
 	/**
 	 * Instantiates a new vertex.
 	 *
-	 * @param pos the position of the vertex
-	 * @param texCoord the texture coordinate
+	 * @param pos
+	 *            the position of the vertex
+	 * @param texCoord
+	 *            the texture coordinate
 	 */
 	public Vertex(Vector2f pos, Vector2f texCoord)
 	{

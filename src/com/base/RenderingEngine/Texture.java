@@ -19,18 +19,20 @@ import de.matthiasmann.twl.utils.PNGDecoder.Format;
  */
 public class Texture
 {
-	
+
 	/** The id of the texture. */
 	private int id;
-	
+
 	/** The location of the texture object (eg. TEXTURE0, TEXTURE17). */
 	private int location;
 
 	/**
 	 * Instantiates a new texture.
 	 *
-	 * @param filename the filename of the texture image(PNG)
-	 * @param location the location for the texture
+	 * @param filename
+	 *            the filename of the texture image(PNG)
+	 * @param location
+	 *            the location for the texture
 	 */
 	public Texture(String filename, int location)
 	{
@@ -60,7 +62,7 @@ public class Texture
 			System.exit(1);
 		}
 	}
-	
+
 	/**
 	 * Binds the texture to be used
 	 */
@@ -86,7 +88,9 @@ public class Texture
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#finalize()
 	 */
 	@Override

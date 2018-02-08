@@ -8,7 +8,7 @@ import org.joml.Vector2f;
  */
 public class Triangle extends Mesh
 {
-	
+
 	/**
 	 * Instantiates a new triangle.
 	 */
@@ -17,15 +17,15 @@ public class Triangle extends Mesh
 		this.init();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.base.RenderingEngine.mesh.Mesh#initVertices()
 	 */
 	@Override
 	protected void initVertices()
 	{
-		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-0.5f,-0.5f)),
-										 new Vertex(new Vector2f(0.5f,-0.5f)),
-										 new Vertex(new Vector2f(0,0.5f))}, new int[]{0,1,2});
-		
+		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-0.5f, -0.5f)), new Vertex(new Vector2f(0.5f, -0.5f)), new Vertex(new Vector2f(0, 0.5f))}, new int[]{0, 1, 2});
+
 	}
 }

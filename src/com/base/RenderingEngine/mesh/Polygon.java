@@ -6,12 +6,14 @@ package com.base.RenderingEngine.mesh;
  */
 public class Polygon extends Mesh
 {
-	
+
 	/**
 	 * Instantiates a new polygon.
 	 *
-	 * @param vertices the vertices
-	 * @param indices the indices
+	 * @param vertices
+	 *            the vertices
+	 * @param indices
+	 *            the indices
 	 */
 	public Polygon(Vertex[] vertices, int[] indices)
 	{
@@ -19,13 +21,15 @@ public class Polygon extends Mesh
 		this.bufferVertices(vertices, indices);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.base.RenderingEngine.mesh.Mesh#initVertices()
 	 */
 	@Override
-	protected void initVertices() 
+	protected void initVertices()
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }

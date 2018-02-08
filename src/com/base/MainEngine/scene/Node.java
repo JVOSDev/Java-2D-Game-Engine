@@ -10,13 +10,13 @@ import com.base.MainEngine.MainEngine;
  */
 public abstract class Node
 {
-	
+
 	/** The children. */
 	protected ArrayList<Node> children;
-	
+
 	/** The transform. */
 	protected Transform transform;
-	
+
 	/** The parent. */
 	protected Node parent = null;
 
@@ -32,7 +32,8 @@ public abstract class Node
 	/**
 	 * Adds a child node.
 	 *
-	 * @param node the node
+	 * @param node
+	 *            the node
 	 */
 	public void addChild(Node node)
 	{
@@ -49,7 +50,7 @@ public abstract class Node
 	{
 		return this.children;
 	}
-	
+
 	/**
 	 * Gets the transform. The transform is combined with the parent transform
 	 *
@@ -61,7 +62,7 @@ public abstract class Node
 		{
 			Transform combine = new Transform();
 
-			combine.setRotation(this.transform.getRotation()+ this.parent.getTransform().getRotation());
+			combine.setRotation(this.transform.getRotation() + this.parent.getTransform().getRotation());
 			combine.setTranslation(this.transform.getTranslation().add(this.parent.getTransform().getTranslation()));
 			combine.setScale(this.transform.getScale().mul(this.parent.getTransform().getScale()));
 
@@ -86,16 +87,20 @@ public abstract class Node
 	/**
 	 * Get input
 	 *
-	 * @param delta the delta time between frames
-	 * @param engine the main engine
+	 * @param delta
+	 *            the delta time between frames
+	 * @param engine
+	 *            the main engine
 	 */
 	public abstract void input(float delta, MainEngine engine);
 
 	/**
 	 * Inputs all children.
 	 *
-	 * @param delta the delta time between frames
-	 * @param engine the main engine
+	 * @param delta
+	 *            the delta time between frames
+	 * @param engine
+	 *            the main engine
 	 */
 	public void inputAll(float delta, MainEngine engine)
 	{
@@ -109,14 +114,16 @@ public abstract class Node
 	/**
 	 * Render.
 	 *
-	 * @param engine the main engine
+	 * @param engine
+	 *            the main engine
 	 */
 	public abstract void render(MainEngine engine);
 
 	/**
 	 * Renders all the children nodes.
 	 *
-	 * @param engine the main engine
+	 * @param engine
+	 *            the main engine
 	 */
 	public void renderAll(MainEngine engine)
 	{
@@ -130,7 +137,8 @@ public abstract class Node
 	/**
 	 * Sets the parent of the node.
 	 *
-	 * @param parent the new parent
+	 * @param parent
+	 *            the new parent
 	 */
 	public void setParent(Node parent)
 	{
@@ -140,16 +148,20 @@ public abstract class Node
 	/**
 	 * Updates the node.
 	 *
-	 * @param delta the delta time between frames
-	 * @param engine the main engine
+	 * @param delta
+	 *            the delta time between frames
+	 * @param engine
+	 *            the main engine
 	 */
 	public abstract void update(float delta, MainEngine engine);
 
 	/**
 	 * Updates all the child nodes.
 	 *
-	 * @param delta the delta time between frames
-	 * @param engine the main engine
+	 * @param delta
+	 *            the delta time between frames
+	 * @param engine
+	 *            the main engine
 	 */
 	public void updateAll(float delta, MainEngine engine)
 	{

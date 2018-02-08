@@ -8,7 +8,7 @@ import org.lwjgl.opengl.*;
  */
 public class OpenGLManager
 {
-	
+
 	/**
 	 * Clears the screen.
 	 */
@@ -20,7 +20,8 @@ public class OpenGLManager
 	/**
 	 * Initializes OpenGL to the current window;
 	 *
-	 * @param window the current window
+	 * @param window
+	 *            the current window
 	 */
 	public static void initOpenGL(Window window)
 	{
@@ -39,9 +40,12 @@ public class OpenGLManager
 	/**
 	 * Sets the color the screen clears to
 	 *
-	 * @param r the red component of the color
-	 * @param g the green component of the color
-	 * @param b the blue component of the color
+	 * @param r
+	 *            the red component of the color
+	 * @param g
+	 *            the green component of the color
+	 * @param b
+	 *            the blue component of the color
 	 */
 	public static void setClearColor(float r, float g, float b)
 	{

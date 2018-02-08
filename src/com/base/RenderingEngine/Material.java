@@ -8,17 +8,18 @@ import org.joml.Vector3f;
  */
 public class Material
 {
-	
+
 	/** The base color. */
 	private Vector3f baseColor;
-	
+
 	/** The diffuse texture. */
 	private Texture diffTexture;
 
 	/**
 	 * Instantiates a new material with a white base color.
 	 *
-	 * @param texture the diffuse texture
+	 * @param texture
+	 *            the diffuse texture
 	 */
 	public Material(Texture texture)
 	{
@@ -28,8 +29,10 @@ public class Material
 	/**
 	 * Instantiates a new material.
 	 *
-	 * @param baseColor the base color
-	 * @param texture the diffuse texture
+	 * @param baseColor
+	 *            the base color
+	 * @param texture
+	 *            the diffuse texture
 	 */
 	public Material(Vector3f baseColor, Texture texture)
 	{
@@ -60,7 +63,8 @@ public class Material
 	/**
 	 * Sets the base color.
 	 *
-	 * @param baseColor the new base color
+	 * @param baseColor
+	 *            the new base color
 	 */
 	public void setBaseColor(Vector3f baseColor)
 	{
@@ -70,7 +74,8 @@ public class Material
 	/**
 	 * Sets the diffuse texture.
 	 *
-	 * @param texture the new diffuse texture
+	 * @param texture
+	 *            the new diffuse texture
 	 */
 	public void setTexture(Texture texture)
 	{
