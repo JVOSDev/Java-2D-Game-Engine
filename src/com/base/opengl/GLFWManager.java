@@ -1,6 +1,7 @@
 package com.base.opengl;
 
-import org.lwjgl.glfw.*;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
 
 // TODO: Auto-generated Javadoc
 /**

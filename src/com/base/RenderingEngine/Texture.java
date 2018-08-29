@@ -68,7 +68,7 @@ public class Texture
 	 */
 	public void bind()
 	{
-		GL13.glActiveTexture(GL13.GL_TEXTURE0 + location);
+		GL13.glActiveTexture(GL13.GL_TEXTURE0 + this.location);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.id);
 	}
 
@@ -90,7 +90,7 @@ public class Texture
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#finalize()
 	 */
 	@Override

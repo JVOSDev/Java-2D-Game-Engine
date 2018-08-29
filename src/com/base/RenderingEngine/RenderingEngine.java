@@ -41,12 +41,12 @@ public class RenderingEngine
 	 */
 	public void renderEntity(Entity entity, MainEngine engine)
 	{
-		shader.bind();
-		shader.updateProjection(camera);
-		shader.updateMaterial(entity.getMaterial());
-		shader.updateTransform(entity.getTransform());
+		this.shader.bind();
+		this.shader.updateProjection(this.camera);
+		this.shader.updateMaterial(entity.getMaterial());
+		this.shader.updateTransform(entity.getTransform());
 		Mesh m = entity.getMesh();
 		m.draw();
-		shader.unbind();
+		this.shader.unbind();
 	}
 }

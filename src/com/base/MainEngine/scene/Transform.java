@@ -63,7 +63,7 @@ public class Transform
 	 */
 	public Vector2f getTranslation()
 	{
-		return translation;
+		return this.translation;
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class Transform
 	 */
 	public float getRotation()
 	{
-		return rotation;
+		return this.rotation;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Transform
 	 */
 	public Vector2f getScale()
 	{
-		return scale;
+		return this.scale;
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class Transform
 	/**
 	 * https://gamedev.stackexchange.com/questions/25411/basics-of-drawing-in-2d
 	 * -with-opengl-3-shaders
-	 * 
+	 *
 	 * Position Rotation Scale |1, 0, tx| |cos(theta), -sin(theta), 0| |sx, 0,
 	 * 0| |0, 1, ty| * |sin(theta), cos(theta), 0| * |0, sy, 0| |0, 0, 1 | |0,
 	 * 0, 1| |0, 0, 1|
@@ -132,7 +132,7 @@ public class Transform
 
 	public Matrix3x2f getTransformMatrix()
 	{
-		return new Matrix3x2f().translate(translation).rotate(rotation).scale(scale.x, scale.y);
+		return new Matrix3x2f().translate(this.translation).rotate(this.rotation).scale(this.scale.x, this.scale.y);
 	}
 
 	/**

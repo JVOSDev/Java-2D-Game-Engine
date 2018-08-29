@@ -1,9 +1,10 @@
 package com.base.opengl;
 
-import org.lwjgl.glfw.*;
-import org.lwjgl.system.*;
+import java.nio.IntBuffer;
 
-import java.nio.*;
+import org.lwjgl.glfw.Callbacks;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryStack;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -29,7 +30,6 @@ public class Window
 		{
 			GLFW.glfwSetWindowSize(id, width, height);
 		});
-
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class Window
 	 */
 	public void closeWindow()
 	{
-		GLFW.glfwSetWindowShouldClose(id, true);
+		GLFW.glfwSetWindowShouldClose(this.id, true);
 	}
 
 	/**

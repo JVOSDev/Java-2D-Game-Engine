@@ -94,7 +94,7 @@ public class Scene
 	 */
 	public ArrayList<Node> getAllNodes()
 	{
-		return getRoot().children;
+		return this.getRoot().children;
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class Scene
 	 */
 	public Node getRoot()
 	{
-		return root;
+		return this.root;
 	}
 
 	/**

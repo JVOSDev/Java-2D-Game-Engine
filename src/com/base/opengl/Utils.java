@@ -167,11 +167,11 @@ public class Utils
 	{
 		ArrayList<String> result = new ArrayList<>();
 
-		for(int i = 0; i < data.length; i++)
+		for(String element : data)
 		{
-			if(!data[i].equals(""))
+			if(!element.equals(""))
 			{
-				result.add(data[i]);
+				result.add(element);
 			}
 		}
 
@@ -211,7 +211,9 @@ public class Utils
 		{
 			read = inStream.read(buffer);
 			if(read == -1)
+			{
 				break;
+			}
 			outStream.write(buffer, 0, read);
 		}
 		inStream.close();

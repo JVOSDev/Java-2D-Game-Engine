@@ -2,7 +2,6 @@ package com.base.MainEngine;
 
 import org.lwjgl.glfw.GLFW;
 
-import com.base.AudioEngine.AudioEngine;
 import com.base.MainEngine.scene.Camera;
 import com.base.MainEngine.scene.Scene;
 import com.base.RenderingEngine.RenderingEngine;
@@ -31,8 +30,6 @@ public class MainEngine
 
 	/** The render engine. */
 	private RenderingEngine renderEngine;
-	
-	private AudioEngine audioEngine;
 
 	/** The camera. */
 	private Camera camera;
@@ -44,7 +41,7 @@ public class MainEngine
 	 */
 	public MainEngine()
 	{
-		init();
+		this.init();
 	}
 
 	/**
@@ -52,7 +49,7 @@ public class MainEngine
 	 */
 	public void start()
 	{
-		loop();
+		this.loop();
 	}
 
 	/**
@@ -60,7 +57,8 @@ public class MainEngine
 	 */
 	public void stop()
 	{
-		cleanUp();
+		this.cleanUp();
+		System.exit(0);
 	}
 
 	/**
@@ -69,28 +67,43 @@ public class MainEngine
 	private void loop()
 	{
 		float delta = 0;
-		while(!window.isCloseRequested())
+		float tTime = 0;
+		int frameCount = 0;
+		while(!this.window.isCloseRequested())
 		{
 			float startTime = System.nanoTime();
 			OpenGLManager.clearScreen();
 
 			// TODO: update input engine? maybe
-			scene.input(delta, this);
+			this.scene.input(delta, this);
+			if(InputManager.pollKey(GLFW.GLFW_KEY_ESCAPE))
+			{
+				this.window.closeWindow();
+				this.stop();
+			}
 
 			// update Objects(Scene)
-			scene.update(delta, this);
+			this.scene.update(delta, this);
 
 			// TODO: update Physics engine
-			
-			//update Audio engine
-			this.audioEngine.updateListener(camera.getTransform().getTranslation());
+
+			// update Audio engine
+			// this.audioEngine.updateListener(camera.getTransform().getTranslation());
 
 			// update rendering engine(Render)
-			scene.render(this);
+			this.scene.render(this);
 
-			window.swapBuffers();
+			this.window.swapBuffers();
+			frameCount++;
 
 			delta = (System.nanoTime() - startTime) / 1000000000f;
+			tTime += delta;
+			if(tTime >= 1)
+			{
+				System.out.println(frameCount);
+				tTime = 0;
+				frameCount = 0;
+			}
 		}
 	}
 
@@ -100,22 +113,16 @@ public class MainEngine
 	private void init()
 	{
 		GLFWManager.initGLFW();
-		window = Window.createWindow(LENGTH, WIDTH, "Test 2D Game");
-		window.makeWindowCurrent();
+		this.window = Window.createWindow(this.LENGTH, this.WIDTH, "Test 2D Game");
+		this.window.makeWindowCurrent();
 
-		GLFW.glfwSetKeyCallback(window.getId(), (window, key, scancode, action, mods) ->
-		{
-			if(key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_RELEASE)
-				this.window.closeWindow();
-			this.stop();
-		});
-
-		OpenGLManager.initOpenGL(window);
+		OpenGLManager.initOpenGL(this.window);
 		this.scene = new Scene();
-		this.camera = new Camera(1, -1, -1, 1, -10, 10, ((float) LENGTH / (float) WIDTH));
-		scene.addNode(camera);
-		this.renderEngine = new RenderingEngine(camera);
-		this.audioEngine = new AudioEngine();
+		this.camera = new Camera(1, -1, -1, 1, -10, 10, ((float) this.LENGTH / (float) this.WIDTH));
+		this.scene.addNode(this.camera);
+		this.renderEngine = new RenderingEngine(this.camera);
+
+		GLFW.glfwSetKeyCallback(this.window.getId(), new InputManager());
 	}
 
 	/**
@@ -123,23 +130,22 @@ public class MainEngine
 	 */
 	private void cleanUp()
 	{
-		window.destroy();
-		audioEngine.cleanUp();
+		this.window.destroy();
 		GLFWManager.destroyGLFW();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#finalize()
 	 */
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	protected void finalize() throws Throwable
 	{
-		cleanUp();
+		this.cleanUp();
 	}
 
 	/**
@@ -149,7 +155,7 @@ public class MainEngine
 	 */
 	public Window getWindow()
 	{
-		return window;
+		return this.window;
 	}
 
 	/**
@@ -159,16 +165,16 @@ public class MainEngine
 	 */
 	public Scene getScene()
 	{
-		return scene;
+		return this.scene;
 	}
 
 	/**
-	 * Gets the renderengine.
+	 * Gets the rendering engine.
 	 *
-	 * @return the renderengine
+	 * @return the render engine
 	 */
 	public RenderingEngine getRenderEngine()
 	{
-		return renderEngine;
+		return this.renderEngine;
 	}
 }

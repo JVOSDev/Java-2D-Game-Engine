@@ -250,7 +250,7 @@ public class Shader
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#finalize()
 	 */
 	@Override

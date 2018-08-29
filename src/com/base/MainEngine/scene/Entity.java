@@ -56,7 +56,7 @@ public class Entity extends Node
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.base.MainEngine.scene.Node#input(float,
 	 * com.base.MainEngine.MainEngine)
 	 */
@@ -68,7 +68,7 @@ public class Entity extends Node
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.base.MainEngine.scene.Node#render(com.base.MainEngine.MainEngine)
 	 */
@@ -91,7 +91,7 @@ public class Entity extends Node
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.base.MainEngine.scene.Node#update(float,
 	 * com.base.MainEngine.MainEngine)
 	 */
@@ -108,7 +108,7 @@ public class Entity extends Node
 	 */
 	public Material getMaterial()
 	{
-		return material;
+		return this.material;
 	}
 
 	/**

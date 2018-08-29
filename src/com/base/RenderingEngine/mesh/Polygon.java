@@ -17,13 +17,13 @@ public class Polygon extends Mesh
 	 */
 	public Polygon(Vertex[] vertices, int[] indices)
 	{
-		init();
+		this.init();
 		this.bufferVertices(vertices, indices);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.base.RenderingEngine.mesh.Mesh#initVertices()
 	 */
 	@Override

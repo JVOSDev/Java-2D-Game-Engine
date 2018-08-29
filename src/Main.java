@@ -8,7 +8,7 @@ public class Main
 	public static void main(String[] args)
 	{
 		MainEngine mainEngine = new MainEngine();
-		mainEngine.getScene().addNode(new Entity(new Circle(1, 1000)));
+		mainEngine.getScene().addNode(new Entity(new Circle(1, 150)));
 		mainEngine.start();
 	}
 }

@@ -1,6 +1,6 @@
 package tests.com.base.opengl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 

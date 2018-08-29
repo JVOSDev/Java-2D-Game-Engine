@@ -19,7 +19,7 @@ public class Triangle extends Mesh
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.base.RenderingEngine.mesh.Mesh#initVertices()
 	 */
 	@Override
