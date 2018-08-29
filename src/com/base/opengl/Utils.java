@@ -84,7 +84,7 @@ public class Utils
 	}
 
 	/**
-	 * Buffers integers for OpenGL
+	 * Buffers integers for OpenGL.
 	 *
 	 * @param values
 	 *            the integer values
@@ -182,7 +182,7 @@ public class Utils
 	}
 
 	/**
-	 * Converts an Integer array to an int array
+	 * Converts an Integer array to an int array.
 	 *
 	 * @param data
 	 *            the Integer data
@@ -200,6 +200,15 @@ public class Utils
 		return result;
 	}
 
+	/**
+	 * File to byte buffer.
+	 *
+	 * @param filename
+	 *            the filename
+	 * @return the byte buffer
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	public static ByteBuffer fileToByteBuffer(String filename) throws IOException
 	{
 		int bufferSize = 1024;
@@ -222,6 +231,9 @@ public class Utils
 		return byteData;
 	}
 
+	/**
+	 * Check AL error.
+	 */
 	public static void checkALError()
 	{
 		int err = AL10.alGetError();

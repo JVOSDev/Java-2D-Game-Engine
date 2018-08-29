@@ -76,7 +76,7 @@ public class MainEngine
 
 			// TODO: update input engine? maybe
 			this.scene.input(delta, this);
-			if(InputManager.pollKey(GLFW.GLFW_KEY_ESCAPE))
+			if(KeyboardManager.pollKey(GLFW.GLFW_KEY_ESCAPE))
 			{
 				this.window.closeWindow();
 				this.stop();
@@ -122,7 +122,9 @@ public class MainEngine
 		this.scene.addNode(this.camera);
 		this.renderEngine = new RenderingEngine(this.camera);
 
-		GLFW.glfwSetKeyCallback(this.window.getId(), new InputManager());
+		GLFW.glfwSetKeyCallback(this.window.getId(), new KeyboardManager());
+		GLFW.glfwSetMouseButtonCallback(this.window.getId(), new MouseButtonManager());
+		GLFW.glfwSetCursorPosCallback(this.window.getId(), new MouseManager());
 	}
 
 	/**

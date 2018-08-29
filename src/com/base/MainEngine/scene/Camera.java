@@ -4,7 +4,7 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.lwjgl.glfw.GLFW;
 
-import com.base.MainEngine.InputManager;
+import com.base.MainEngine.KeyboardManager;
 import com.base.MainEngine.MainEngine;
 
 // TODO: Auto-generated Javadoc
@@ -16,7 +16,9 @@ public class Camera extends Node
 
 	/** The orthogonal projection matrix. */
 	private Matrix4f orthoProjection;
-	private Vector2f moveDirection;
+
+	/** The last angle. */
+	private float lastAngle = 0;
 
 	/**
 	 * Instantiates a new camera with aspect ratio correction.
@@ -25,10 +27,10 @@ public class Camera extends Node
 	 *            the distance from the center to the left frustum edge
 	 * @param right
 	 *            the distance from the center to the right frustum edge
-	 * @param bottom
-	 *            the distance from the center to the bottom frustum edge
 	 * @param top
 	 *            the distance from the center to the top frustum edge
+	 * @param bottom
+	 *            the distance from the center to the bottom frustum edge
 	 * @param near
 	 *            near clipping plane distance
 	 * @param far
@@ -39,7 +41,6 @@ public class Camera extends Node
 	public Camera(float left, float right, float top, float bottom, float near, float far, float aspectRatio)
 	{
 		this.orthoProjection = new Matrix4f().ortho(left * (aspectRatio), right * (aspectRatio), bottom, top, near, far);
-		this.moveDirection = new Vector2f(0, 0);
 	}
 
 	/**
@@ -50,10 +51,10 @@ public class Camera extends Node
 	 *            the distance from the center to the left frustum edge
 	 * @param right
 	 *            the distance from the center to the right frustum edge
-	 * @param bottom
-	 *            the distance from the center to the bottom frustum edge
 	 * @param top
 	 *            the distance from the center to the top frustum edge
+	 * @param bottom
+	 *            the distance from the center to the bottom frustum edge
 	 * @param near
 	 *            near clipping plane distance
 	 * @param far
@@ -62,7 +63,6 @@ public class Camera extends Node
 	public Camera(float left, float right, float top, float bottom, float near, float far)
 	{
 		this.orthoProjection = new Matrix4f().ortho(left, right, bottom, top, near, far);
-		this.moveDirection = new Vector2f(0, 0);
 	}
 
 	/**
@@ -73,7 +73,15 @@ public class Camera extends Node
 	public Matrix4f getProjectionM()
 	{
 		Matrix4f c = this.orthoProjection;
-		return c.setTranslation(this.transform.getTranslation().x, this.transform.getTranslation().y, 0);
+		if(this.transform.getRotation() != this.lastAngle)
+		{
+			c = c.rotate(this.transform.getRotation() - this.lastAngle, 0, 0, 1);
+			this.lastAngle = this.transform.getRotation();
+		}
+
+		c = c.setTranslation(this.transform.getTranslation().x * -1f, this.transform.getTranslation().y, 0);
+
+		return c;
 	}
 
 	/**
@@ -83,10 +91,10 @@ public class Camera extends Node
 	 *            the distance from the center to the left frustum edge
 	 * @param right
 	 *            the distance from the center to the right frustum edge
-	 * @param bottom
-	 *            the distance from the center to the bottom frustum edge
 	 * @param top
 	 *            the distance from the center to the top frustum edge
+	 * @param bottom
+	 *            the distance from the center to the bottom frustum edge
 	 * @param near
 	 *            near clipping plane distance
 	 * @param far
@@ -108,21 +116,30 @@ public class Camera extends Node
 	@Override
 	public void input(float delta, MainEngine engine)
 	{
-		if(InputManager.pollKey(GLFW.GLFW_KEY_A))
+		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_D))
 		{
-			this.moveDirection.add(-1 * delta, 0);
+			this.transform.translate(new Vector2f(1f * delta, 0));
 		}
-		if(InputManager.pollKey(GLFW.GLFW_KEY_D))
+		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_A))
 		{
-			this.moveDirection.add(1 * delta, 0);
+			this.transform.translate(new Vector2f(-1f * delta, 0));
 		}
-		if(InputManager.pollKey(GLFW.GLFW_KEY_W))
+		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_W))
 		{
-			this.moveDirection.add(0, 1 * delta);
+			this.transform.translate(new Vector2f(0, -1f * delta));
 		}
-		if(InputManager.pollKey(GLFW.GLFW_KEY_S))
+		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_S))
 		{
-			this.moveDirection.add(0, -1 * delta);
+			this.transform.translate(new Vector2f(0, 1f * delta));
+		}
+
+		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_LEFT))
+		{
+			this.transform.setRotation(this.transform.getRotation() + delta);
+		}
+		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_RIGHT))
+		{
+			this.transform.setRotation(this.transform.getRotation() - delta);
 		}
 
 	}
@@ -147,8 +164,6 @@ public class Camera extends Node
 	@Override
 	public void update(float delta, MainEngine engine)
 	{
-		this.transform.translate(this.moveDirection);
-		this.moveDirection.set(0);
 	}
 
 }

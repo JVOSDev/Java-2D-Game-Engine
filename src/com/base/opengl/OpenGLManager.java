@@ -1,5 +1,6 @@
 package com.base.opengl;
 
+import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
@@ -19,7 +20,7 @@ public class OpenGLManager
 	}
 
 	/**
-	 * Initializes OpenGL to the current window;
+	 * Initializes OpenGL to the current window;.
 	 *
 	 * @param window
 	 *            the current window
@@ -37,10 +38,11 @@ public class OpenGLManager
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
+		GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GL11.GL_FALSE);
 	}
 
 	/**
-	 * Sets the color the screen clears to
+	 * Sets the color the screen clears to.
 	 *
 	 * @param r
 	 *            the red component of the color

@@ -31,6 +31,14 @@ public class Rectangle extends Mesh
 	}
 
 	/**
+	 * Instantiates a new rectangle.
+	 */
+	public Rectangle()
+	{
+		this(1, 1);
+	}
+
+	/**
 	 * draw order and vertex data from:
 	 * https://stackoverflow.com/questions/11806690/android-opengl-es-2-drawing-
 	 * squares

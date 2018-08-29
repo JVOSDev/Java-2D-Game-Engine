@@ -64,7 +64,7 @@ public class Texture
 	}
 
 	/**
-	 * Binds the texture to be used
+	 * Binds the texture to be used.
 	 */
 	public void bind()
 	{
@@ -73,7 +73,7 @@ public class Texture
 	}
 
 	/**
-	 * Destroys the texture data
+	 * Destroys the texture data.
 	 */
 	public void destroy()
 	{
@@ -81,7 +81,7 @@ public class Texture
 	}
 
 	/**
-	 * Unbinds the texture
+	 * Unbinds the texture.
 	 */
 	public void unbind()
 	{

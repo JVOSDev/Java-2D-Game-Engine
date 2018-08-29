@@ -57,7 +57,7 @@ public class Window
 	}
 
 	/**
-	 * Destroys the window data
+	 * Destroys the window data.
 	 */
 	public void destroy()
 	{
@@ -66,7 +66,7 @@ public class Window
 	}
 
 	/**
-	 * Closes the window
+	 * Closes the window.
 	 */
 	public void closeWindow()
 	{
@@ -74,7 +74,7 @@ public class Window
 	}
 
 	/**
-	 * Gets the dimensions of the window;
+	 * Gets the dimensions of the window;.
 	 *
 	 * @return the dimensions of the window (x,y)
 	 */
@@ -96,7 +96,7 @@ public class Window
 	}
 
 	/**
-	 * Gets the height of the window
+	 * Gets the height of the window.
 	 *
 	 * @return the height
 	 */
@@ -106,7 +106,7 @@ public class Window
 	}
 
 	/**
-	 * Gets the id pointer of the window For use with GLFW
+	 * Gets the id pointer of the window For use with GLFW.
 	 *
 	 * @return the id
 	 */
@@ -116,7 +116,7 @@ public class Window
 	}
 
 	/**
-	 * Gets the width of the window
+	 * Gets the width of the window.
 	 *
 	 * @return the width
 	 */

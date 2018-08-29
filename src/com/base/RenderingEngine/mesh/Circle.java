@@ -32,6 +32,14 @@ public class Circle extends Mesh
 		this.init();
 	}
 
+	/**
+	 * Instantiates a new circle.
+	 */
+	public Circle()
+	{
+		this(1, 50);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -40,11 +48,11 @@ public class Circle extends Mesh
 	@Override
 	protected void initVertices()
 	{
-		Vertex[] cVertex = new Vertex[this.resolution + 1];
+		Vertex[] cVertex = new Vertex[this.resolution + 2];
 		cVertex[0] = new Vertex(new Vector2f(0, 0), new Vector2f(.5f, .5f));
-		float angle = 360.0f / this.resolution;
+		float angle = (float) ((2 * Math.PI) / this.resolution);
 
-		for(int i = 0; i < this.resolution; i++)
+		for(int i = 0; i <= this.resolution; i++)
 		{
 			float a = i * angle;
 			float cosX = (float) Math.cos(a);

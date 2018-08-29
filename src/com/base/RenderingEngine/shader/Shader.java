@@ -66,7 +66,7 @@ public class Shader
 	}
 
 	/**
-	 * Adds the uniform to the shader by name
+	 * Adds the uniform to the shader by name.
 	 *
 	 * @param name
 	 *            the name of the uniform
@@ -86,7 +86,7 @@ public class Shader
 	}
 
 	/**
-	 * Bind the shader program
+	 * Bind the shader program.
 	 */
 	public void bind()
 	{
@@ -94,7 +94,7 @@ public class Shader
 	}
 
 	/**
-	 * Destroys the shader
+	 * Destroys the shader.
 	 */
 	public void destroy()
 	{
@@ -102,7 +102,7 @@ public class Shader
 	}
 
 	/**
-	 * Unbinds the shader program
+	 * Unbinds the shader program.
 	 */
 	public void unbind()
 	{
@@ -110,7 +110,7 @@ public class Shader
 	}
 
 	/**
-	 * Updatest the material.
+	 * Updates the material.
 	 *
 	 * @param material
 	 *            the material to be updated
@@ -122,10 +122,10 @@ public class Shader
 	}
 
 	/**
-	 * Updates the transform
+	 * Updates the transform.
 	 *
 	 * @param transform
-	 *            the transform
+	 *            the transform object to update the shader with
 	 */
 	public void updateTransform(Transform transform)
 	{
@@ -136,7 +136,7 @@ public class Shader
 	 * Updates the projection matrix.
 	 *
 	 * @param camera
-	 *            the camera
+	 *            the camera object to be used
 	 */
 	public void updateProjection(Camera camera)
 	{
@@ -144,7 +144,7 @@ public class Shader
 	}
 
 	/**
-	 * Updates uniform matrix3f.
+	 * Updates a uniform matrix3f.
 	 *
 	 * @param mat
 	 *            the matrix
@@ -197,7 +197,7 @@ public class Shader
 	}
 
 	/**
-	 * Compiles the shader program
+	 * Compiles the shader program.
 	 */
 	private void compile()
 	{
@@ -219,10 +219,10 @@ public class Shader
 	}
 
 	/**
-	 * Loads the shader program from a text file
+	 * Loads the shader program from a text file.
 	 *
 	 * @param type
-	 *            the type
+	 *            the type of the shader (ex Fragment, Vertex, Geometry)
 	 * @param source
 	 *            the source text
 	 */

@@ -40,7 +40,7 @@ public abstract class Mesh
 	protected int size;
 
 	/**
-	 * Inits the mesh pointers
+	 * Inits the mesh pointers.
 	 */
 	protected void init()
 	{
@@ -63,7 +63,7 @@ public abstract class Mesh
 	protected abstract void initVertices();
 
 	/**
-	 * Destroys the mesh data
+	 * Destroys the mesh data.
 	 */
 	public void destroy()
 	{

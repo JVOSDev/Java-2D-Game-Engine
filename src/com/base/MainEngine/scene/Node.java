@@ -85,7 +85,7 @@ public abstract class Node
 	}
 
 	/**
-	 * Get input
+	 * Get input.
 	 *
 	 * @param delta
 	 *            the delta time between frames

@@ -11,7 +11,7 @@ public class GLFWManager
 {
 
 	/**
-	 * Destroys GLFW data
+	 * Destroys GLFW data.
 	 */
 	public static void destroyGLFW()
 	{
