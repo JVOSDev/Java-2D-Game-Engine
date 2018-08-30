@@ -11,6 +11,11 @@ import org.joml.Vector2f;
 public class Circle extends Mesh
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4316748337391507723L;
+
 	/** The radius. */
 	private float radius;
 

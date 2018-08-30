@@ -1,13 +1,20 @@
 package com.base.RenderingEngine;
 
+import java.io.Serializable;
+
 import org.joml.Vector3f;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Material.
  */
-public class Material
+public class Material implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6104238773140899570L;
 
 	/** The base color. */
 	private Vector3f baseColor;
@@ -80,5 +87,10 @@ public class Material
 	public void setTexture(Texture texture)
 	{
 		this.diffTexture = texture;
+	}
+	
+	public void reInit()
+	{
+		this.diffTexture.reInit();
 	}
 }

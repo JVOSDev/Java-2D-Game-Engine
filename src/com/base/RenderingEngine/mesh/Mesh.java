@@ -18,26 +18,36 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glDeleteVertexArrays;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
+import java.io.Serializable;
+
 import com.base.opengl.Utils;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Mesh.
  */
-public abstract class Mesh
+public abstract class Mesh implements Serializable
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -235573831206813363L;
+
 	/** The pointer to the vertex array object. */
-	protected int vao;
+	protected transient int vao;
 
 	/** The pointer to the vertex buffer object. */
-	protected int vbo;
+	protected transient int vbo;
 
 	/** The pointer to the index buffer object. */
-	protected int ibo;
+	protected transient int ibo;
 
 	/** The size of the mesh data. */
-	protected int size;
+	protected transient int size;
+	
+	private Vertex[] vertices;
+	private int[] indices;
 
 	/**
 	 * Inits the mesh pointers.
@@ -49,7 +59,19 @@ public abstract class Mesh
 
 		this.vbo = glGenBuffers();
 		this.ibo = glGenBuffers();
-		this.initVertices();
+		if(vertices != null && indices != null)
+		{
+			this.bufferVertices();
+		}
+		else
+		{
+			this.initVertices();
+		}
+	}
+	
+	public void reInit()
+	{
+		this.init();
 	}
 
 	/**
@@ -111,6 +133,9 @@ public abstract class Mesh
 	 */
 	protected void bufferVertices(Vertex[] vertices, int[] indices)
 	{
+		this.vertices = vertices;
+		this.indices = indices;
+		
 		glBindVertexArray(this.vao);
 
 		glBindBuffer(GL_ARRAY_BUFFER, this.vbo);
@@ -127,6 +152,11 @@ public abstract class Mesh
 		glBindVertexArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	}
+	
+	private void bufferVertices()
+	{
+		this.bufferVertices(vertices, indices);
 	}
 
 	/**

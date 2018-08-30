@@ -1,5 +1,7 @@
 package com.base.MainEngine.scene;
 
+import java.io.Serializable;
+
 import com.base.MainEngine.MainEngine;
 import com.base.RenderingEngine.Material;
 import com.base.RenderingEngine.Texture;
@@ -9,8 +11,13 @@ import com.base.RenderingEngine.mesh.Mesh;
 /**
  * The Class Entity.
  */
-public class Entity extends Node
+public class Entity extends Node implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5039008086591398196L;
 
 	/** The mesh. */
 	protected Mesh mesh;
@@ -120,6 +127,13 @@ public class Entity extends Node
 	public void setMaterial(Material material)
 	{
 		this.material = material;
+	}
+	
+	@Override
+	void reInit()
+	{
+		this.mesh.reInit();
+		this.material.reInit();
 	}
 
 }

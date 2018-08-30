@@ -1,5 +1,6 @@
 package com.base.MainEngine.scene;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.base.MainEngine.MainEngine;
@@ -8,9 +9,13 @@ import com.base.MainEngine.MainEngine;
 /**
  * The Class Scene.
  */
-public class Scene
+public class Scene implements Serializable
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8443020325922176378L;
 	/** The root node. */
 	private Node root;
 
@@ -21,6 +26,10 @@ public class Scene
 	{
 		this.setRoot(new Node()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void input(float delta, MainEngine engine)
@@ -116,5 +125,10 @@ public class Scene
 	public void setRoot(Node root)
 	{
 		this.root = root;
+	}
+	
+	public void reInit()
+	{
+		this.root.reInit();
 	}
 }

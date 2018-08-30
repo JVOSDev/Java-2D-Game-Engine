@@ -9,6 +9,11 @@ import org.joml.Vector2f;
 public class Rectangle extends Mesh
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4887460056711971205L;
+
 	/** The x length. */
 	private float xLength;
 

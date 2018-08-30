@@ -1,7 +1,5 @@
 
 import com.base.MainEngine.MainEngine;
-import com.base.MainEngine.scene.Entity;
-import com.base.RenderingEngine.mesh.Circle;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -16,10 +14,12 @@ public class Main
 	 * @param args
 	 *            the arguments
 	 */
+	
 	public static void main(String[] args)
 	{
-		MainEngine mainEngine = new MainEngine();
-		mainEngine.getScene().addNode(new Entity(new Circle()));
-		mainEngine.start();
+		MainEngine mainEngine = new MainEngine("testScene.sc");
+		//mainEngine.getScene().addNode(new Entity(new Circle()));
+		//SceneExporter.exportScene(mainEngine.getScene(), "testScene.sc");
+		mainEngine.start();	
 	}
 }

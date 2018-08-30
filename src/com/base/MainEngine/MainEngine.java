@@ -4,6 +4,7 @@ import org.lwjgl.glfw.GLFW;
 
 import com.base.MainEngine.scene.Camera;
 import com.base.MainEngine.scene.Scene;
+import com.base.MainEngine.scene.sceneloader.SceneImporter;
 import com.base.RenderingEngine.RenderingEngine;
 import com.base.opengl.GLFWManager;
 import com.base.opengl.OpenGLManager;
@@ -41,7 +42,12 @@ public class MainEngine
 	 */
 	public MainEngine()
 	{
-		this.init();
+		this.init(null);
+	}
+	
+	public MainEngine(String filename)
+	{
+		this.init(filename);
 	}
 
 	/**
@@ -110,14 +116,17 @@ public class MainEngine
 	/**
 	 * Inits the engine with a window, opengl, a scene and a camera.
 	 */
-	private void init()
+	private void init(String filename)
 	{
 		GLFWManager.initGLFW();
 		this.window = Window.createWindow(this.LENGTH, this.WIDTH, "Test 2D Game");
 		this.window.makeWindowCurrent();
 
 		OpenGLManager.initOpenGL(this.window);
-		this.scene = new Scene();
+		if(filename == null)
+			this.scene = new Scene();
+		else
+			this.scene = SceneImporter.importScene(filename);
 		this.camera = new Camera(1, -1, -1, 1, -10, 10, ((float) this.LENGTH / (float) this.WIDTH));
 		this.scene.addNode(this.camera);
 		this.renderEngine = new RenderingEngine(this.camera);

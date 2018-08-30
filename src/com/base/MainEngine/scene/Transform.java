@@ -1,5 +1,7 @@
 package com.base.MainEngine.scene;
 
+import java.io.Serializable;
+
 import org.joml.Matrix3x2f;
 import org.joml.Vector2f;
 
@@ -7,8 +9,13 @@ import org.joml.Vector2f;
 /**
  * The Class Transform.
  */
-public class Transform
+public class Transform implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7966345310898834120L;
 
 	/** The translation. */
 	private Vector2f translation;

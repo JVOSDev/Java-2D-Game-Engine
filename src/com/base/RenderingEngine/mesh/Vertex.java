@@ -1,13 +1,20 @@
 package com.base.RenderingEngine.mesh;
 
+import java.io.Serializable;
+
 import org.joml.Vector2f;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Vertex.
  */
-public class Vertex
+public class Vertex implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9158048780668748829L;
 
 	/** The Constant SIZE. */
 	public static final int SIZE = 4;

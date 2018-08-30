@@ -1,5 +1,6 @@
 package com.base.MainEngine.scene;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.base.MainEngine.MainEngine;
@@ -8,8 +9,13 @@ import com.base.MainEngine.MainEngine;
 /**
  * The Class Node.
  */
-public abstract class Node
+public abstract class Node implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 123785902093600034L;
 
 	/** The children. */
 	protected ArrayList<Node> children;
@@ -169,6 +175,14 @@ public abstract class Node
 		for(Node node : this.children)
 		{
 			node.updateAll(delta, engine);
+		}
+	}
+	
+	void reInit()
+	{
+		for(Node node : this.children)
+		{
+			node.reInit();
 		}
 	}
 }

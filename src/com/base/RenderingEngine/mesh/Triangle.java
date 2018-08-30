@@ -10,6 +10,11 @@ public class Triangle extends Mesh
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4506833749579072170L;
+
+	/**
 	 * Instantiates a new triangle.
 	 */
 	public Triangle()

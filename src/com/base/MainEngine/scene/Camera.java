@@ -14,6 +14,11 @@ import com.base.MainEngine.MainEngine;
 public class Camera extends Node
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -526151653352902994L;
+
 	/** The orthogonal projection matrix. */
 	private Matrix4f orthoProjection;
 

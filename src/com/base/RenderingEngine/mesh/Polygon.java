@@ -8,6 +8,11 @@ public class Polygon extends Mesh
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1920519682535643817L;
+
+	/**
 	 * Instantiates a new polygon.
 	 *
 	 * @param vertices
