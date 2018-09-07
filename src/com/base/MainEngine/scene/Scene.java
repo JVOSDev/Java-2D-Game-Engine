@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine.scene;
 
 import java.io.Serializable;
@@ -12,9 +15,7 @@ import com.base.MainEngine.MainEngine;
 public class Scene implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8443020325922176378L;
 	/** The root node. */
 	private Node root;
@@ -127,6 +128,9 @@ public class Scene implements Serializable
 		this.root = root;
 	}
 	
+	/**
+	 * Reinitializes the scene after loading it from a saved scene
+	 */
 	public void reInit()
 	{
 		this.root.reInit();

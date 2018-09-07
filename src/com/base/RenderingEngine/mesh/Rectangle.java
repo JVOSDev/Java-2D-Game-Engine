@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine.mesh;
 
 import org.joml.Vector2f;
@@ -9,9 +12,7 @@ import org.joml.Vector2f;
 public class Rectangle extends Mesh
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4887460056711971205L;
 
 	/** The x length. */
@@ -36,7 +37,7 @@ public class Rectangle extends Mesh
 	}
 
 	/**
-	 * Instantiates a new rectangle.
+	 * Instantiates a new rectangle with size in both directions of 1
 	 */
 	public Rectangle()
 	{

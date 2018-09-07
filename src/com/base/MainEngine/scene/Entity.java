@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine.scene;
 
 import java.io.Serializable;
@@ -14,9 +17,7 @@ import com.base.RenderingEngine.mesh.Mesh;
 public class Entity extends Node implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5039008086591398196L;
 
 	/** The mesh. */
@@ -48,7 +49,7 @@ public class Entity extends Node implements Serializable
 	public Entity(Mesh mesh)
 	{
 		this.mesh = mesh;
-		this.material = new Material(new Texture("./res/textures/base.png", 0));
+		this.material = new Material(new Texture("./res/textures/glass.png", 0));
 	}
 
 	/**
@@ -129,6 +130,9 @@ public class Entity extends Node implements Serializable
 		this.material = material;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.base.MainEngine.scene.Node#reInit()
+	 */
 	@Override
 	void reInit()
 	{

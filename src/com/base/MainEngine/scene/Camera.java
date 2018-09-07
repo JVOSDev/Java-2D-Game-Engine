@@ -1,10 +1,10 @@
+/*
+ * 
+ */
 package com.base.MainEngine.scene;
 
 import org.joml.Matrix4f;
-import org.joml.Vector2f;
-import org.lwjgl.glfw.GLFW;
 
-import com.base.MainEngine.KeyboardManager;
 import com.base.MainEngine.MainEngine;
 
 // TODO: Auto-generated Javadoc
@@ -14,9 +14,7 @@ import com.base.MainEngine.MainEngine;
 public class Camera extends Node
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -526151653352902994L;
 
 	/** The orthogonal projection matrix. */
@@ -121,31 +119,31 @@ public class Camera extends Node
 	@Override
 	public void input(float delta, MainEngine engine)
 	{
-		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_D))
-		{
-			this.transform.translate(new Vector2f(1f * delta, 0));
-		}
-		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_A))
-		{
-			this.transform.translate(new Vector2f(-1f * delta, 0));
-		}
-		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_W))
-		{
-			this.transform.translate(new Vector2f(0, -1f * delta));
-		}
-		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_S))
-		{
-			this.transform.translate(new Vector2f(0, 1f * delta));
-		}
-
-		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_LEFT))
-		{
-			this.transform.setRotation(this.transform.getRotation() + delta);
-		}
-		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_RIGHT))
-		{
-			this.transform.setRotation(this.transform.getRotation() - delta);
-		}
+//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_D))
+//		{
+//			this.transform.translate(new Vector2f(1f * delta, 0));
+//		}
+//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_A))
+//		{
+//			this.transform.translate(new Vector2f(-1f * delta, 0));
+//		}
+//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_W))
+//		{
+//			this.transform.translate(new Vector2f(0, -1f * delta));
+//		}
+//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_S))
+//		{
+//			this.transform.translate(new Vector2f(0, 1f * delta));
+//		}
+//
+//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_LEFT))
+//		{
+//			this.transform.setRotation(this.transform.getRotation() + delta);
+//		}
+//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_RIGHT))
+//		{
+//			this.transform.setRotation(this.transform.getRotation() - delta);
+//		}
 
 	}
 

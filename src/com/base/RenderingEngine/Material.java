@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine;
 
 import java.io.Serializable;
@@ -11,9 +14,7 @@ import org.joml.Vector3f;
 public class Material implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -6104238773140899570L;
 
 	/** The base color. */
@@ -89,6 +90,9 @@ public class Material implements Serializable
 		this.diffTexture = texture;
 	}
 	
+	/**
+	 * Re init.
+	 */
 	public void reInit()
 	{
 		this.diffTexture.reInit();

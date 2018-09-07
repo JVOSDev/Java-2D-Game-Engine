@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine;
 
 import java.io.File;
@@ -21,9 +24,7 @@ import de.matthiasmann.twl.utils.PNGDecoder.Format;
 public class Texture implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 8799378377605432082L;
 
 	/** The id of the texture. */
@@ -32,6 +33,7 @@ public class Texture implements Serializable
 	/** The location of the texture object (eg. TEXTURE0, TEXTURE17). */
 	private transient int location;
 	
+	/** The filename. */
 	private String filename;
 
 	/**
@@ -108,11 +110,19 @@ public class Texture implements Serializable
 		this.destroy();
 	}
 
+	/**
+	 * Gets the filename.
+	 *
+	 * @return the filename
+	 */
 	public String getFilename()
 	{
 		return filename;
 	}
 	
+	/**
+	 * Re init.
+	 */
 	public void reInit()
 	{
 		PNGDecoder decoder = null;

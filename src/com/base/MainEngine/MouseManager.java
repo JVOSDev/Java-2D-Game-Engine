@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine;
 
 import org.joml.Vector2f;
@@ -12,10 +15,10 @@ import org.lwjgl.glfw.GLFWMouseButtonCallback;
 public class MouseManager extends GLFWCursorPosCallback
 {
 
-	/** The mouse dx. */
+	/** The mouse direction. */
 	private static Vector2f mouseDx = new Vector2f(0, 0);
 
-	/** The mouse pos. */
+	/** The mouse posistion. */
 	private static Vector2f mousePos = new Vector2f(0, 0);
 
 	/** The mouse button. */
@@ -35,7 +38,7 @@ public class MouseManager extends GLFWCursorPosCallback
 
 	/**
 	 * Get the direction the mouse is moving. Already has the delta time
-	 * incorperated into the value returned.
+	 * Incorporated into the value returned.
 	 *
 	 * @return the mouse direction
 	 */
@@ -58,7 +61,7 @@ public class MouseManager extends GLFWCursorPosCallback
 	 * Checks if a mouse button is pressed.
 	 *
 	 * @param button
-	 *            the keycode of the button to be checked
+	 *            the GLFW keycode of the button to be checked
 	 * @return true, if the button is pressed
 	 */
 	public static boolean isButton(int button)

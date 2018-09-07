@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine.scene.sceneloader;
 
 import java.io.FileInputStream;
@@ -7,8 +10,19 @@ import java.io.ObjectInputStream;
 
 import com.base.MainEngine.scene.Scene;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SceneImporter.
+ */
 public class SceneImporter
 {
+	
+	/**
+	 * Imports a scene from a file. Automatically initializes everything saved.
+	 *
+	 * @param filename the filename
+	 * @return the loaded scene
+	 */
 	public static Scene importScene(String filename)
 	{
 		try

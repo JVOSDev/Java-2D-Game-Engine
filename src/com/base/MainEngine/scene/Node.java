@@ -1,9 +1,13 @@
+/*
+ * 
+ */
 package com.base.MainEngine.scene;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.base.MainEngine.MainEngine;
+import com.base.MainEngine.scene.component.NodeComponent;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -12,13 +16,14 @@ import com.base.MainEngine.MainEngine;
 public abstract class Node implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 123785902093600034L;
 
 	/** The children. */
 	protected ArrayList<Node> children;
+	
+	/** The components. */
+	protected ArrayList<NodeComponent> components;
 
 	/** The transform. */
 	protected Transform transform;
@@ -32,19 +37,21 @@ public abstract class Node implements Serializable
 	public Node()
 	{
 		this.children = new ArrayList<>();
+		this.components = new ArrayList<>();
 		this.transform = new Transform();
 	}
 
 	/**
 	 * Adds a child node.
 	 *
-	 * @param node
-	 *            the node
+	 * @param node            the node
+	 * @return this node
 	 */
-	public void addChild(Node node)
+	public Node addChild(Node node)
 	{
 		this.children.add(node);
 		node.setParent(this);
+		return this;
 	}
 
 	/**
@@ -55,6 +62,29 @@ public abstract class Node implements Serializable
 	public ArrayList<Node> getChildren()
 	{
 		return this.children;
+	}
+	
+	/**
+	 * Adds the component.
+	 *
+	 * @param NodeComponent the component
+	 * @return this node
+	 */
+	public Node addComponent(NodeComponent comp)
+	{
+		this.components.add(comp);
+		return this;
+	}
+	
+
+	/**
+	 * Gets the components.
+	 *
+	 * @return the components
+	 */
+	public ArrayList<NodeComponent> getComponents()
+	{
+		return components;
 	}
 
 	/**
@@ -110,7 +140,14 @@ public abstract class Node implements Serializable
 	 */
 	public void inputAll(float delta, MainEngine engine)
 	{
+		
 		this.input(delta, engine);
+		
+		for(NodeComponent comp : this.components)
+		{
+			comp.input(this, delta, engine);
+		}
+		
 		for(Node node : this.children)
 		{
 			node.inputAll(delta, engine);
@@ -134,6 +171,12 @@ public abstract class Node implements Serializable
 	public void renderAll(MainEngine engine)
 	{
 		this.render(engine);
+		
+		for(NodeComponent comp : this.components)
+		{
+			comp.render(this, engine);
+		}
+		
 		for(Node node : this.children)
 		{
 			node.renderAll(engine);
@@ -172,12 +215,21 @@ public abstract class Node implements Serializable
 	public void updateAll(float delta, MainEngine engine)
 	{
 		this.update(delta, engine);
+		
+		for(NodeComponent comp : this.components)
+		{
+			comp.update(this, delta, engine);
+		}
+		
 		for(Node node : this.children)
 		{
 			node.updateAll(delta, engine);
 		}
 	}
 	
+	/**
+	 * Reinitializes the node after loading it from a saved scene
+	 */
 	void reInit()
 	{
 		for(Node node : this.children)

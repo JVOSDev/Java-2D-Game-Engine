@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine.mesh;
 
 import java.util.Stack;
@@ -11,9 +14,7 @@ import org.joml.Vector2f;
 public class Circle extends Mesh
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4316748337391507723L;
 
 	/** The radius. */
@@ -28,7 +29,7 @@ public class Circle extends Mesh
 	 * @param radius
 	 *            the radius
 	 * @param resolution
-	 *            the resolution of the triangles
+	 *            the resolution of the circle, essential the number of edges to generate
 	 */
 	public Circle(float radius, int resolution)
 	{
@@ -38,7 +39,7 @@ public class Circle extends Mesh
 	}
 
 	/**
-	 * Instantiates a new circle.
+	 * Instantiates a new circle with a radius of 1 and a resolution of 50 triangles.
 	 */
 	public Circle()
 	{

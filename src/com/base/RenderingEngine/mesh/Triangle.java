@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine.mesh;
 
 import org.joml.Vector2f;
@@ -9,9 +12,7 @@ import org.joml.Vector2f;
 public class Triangle extends Mesh
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4506833749579072170L;
 
 	/**

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine;
 
 import org.lwjgl.glfw.GLFW;
@@ -45,6 +48,11 @@ public class MainEngine
 		this.init(null);
 	}
 	
+	/**
+	 * Instantiates a new main engine.
+	 *
+	 * @param filename the filename
+	 */
 	public MainEngine(String filename)
 	{
 		this.init(filename);
@@ -115,6 +123,8 @@ public class MainEngine
 
 	/**
 	 * Inits the engine with a window, opengl, a scene and a camera.
+	 *
+	 * @param filename the filename
 	 */
 	private void init(String filename)
 	{

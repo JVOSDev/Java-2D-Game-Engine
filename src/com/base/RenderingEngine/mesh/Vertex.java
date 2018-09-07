@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine.mesh;
 
 import java.io.Serializable;
@@ -11,9 +14,7 @@ import org.joml.Vector2f;
 public class Vertex implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -9158048780668748829L;
 
 	/** The Constant SIZE. */

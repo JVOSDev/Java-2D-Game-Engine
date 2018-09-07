@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.opengl;
 
 import org.lwjgl.glfw.GLFW;

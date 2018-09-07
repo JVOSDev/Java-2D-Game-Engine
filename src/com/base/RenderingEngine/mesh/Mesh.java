@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine.mesh;
 
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
@@ -29,9 +32,7 @@ import com.base.opengl.Utils;
 public abstract class Mesh implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -235573831206813363L;
 
 	/** The pointer to the vertex array object. */
@@ -46,7 +47,10 @@ public abstract class Mesh implements Serializable
 	/** The size of the mesh data. */
 	protected transient int size;
 	
+	/** The vertices. */
 	private Vertex[] vertices;
+	
+	/** The indices. */
 	private int[] indices;
 
 	/**
@@ -69,6 +73,9 @@ public abstract class Mesh implements Serializable
 		}
 	}
 	
+	/**
+	 * Re init.
+	 */
 	public void reInit()
 	{
 		this.init();
@@ -154,6 +161,9 @@ public abstract class Mesh implements Serializable
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 	
+	/**
+	 * Buffer vertices.
+	 */
 	private void bufferVertices()
 	{
 		this.bufferVertices(vertices, indices);
@@ -182,6 +192,26 @@ public abstract class Mesh implements Serializable
 			inds[i] = i;
 		}
 		return inds;
+	}
+
+	/**
+	 * Gets the vertices.
+	 *
+	 * @return the vertices
+	 */
+	public Vertex[] getVertices()
+	{
+		return vertices;
+	}
+
+	/**
+	 * Gets the indices.
+	 *
+	 * @return the indices
+	 */
+	public int[] getIndices()
+	{
+		return indices;
 	}
 
 	/*

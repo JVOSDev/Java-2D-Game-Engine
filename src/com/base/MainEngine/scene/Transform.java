@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine.scene;
 
 import java.io.Serializable;
@@ -12,9 +15,7 @@ import org.joml.Vector2f;
 public class Transform implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7966345310898834120L;
 
 	/** The translation. */

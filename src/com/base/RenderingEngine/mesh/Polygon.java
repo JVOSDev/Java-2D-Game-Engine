@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.RenderingEngine.mesh;
 
 // TODO: Auto-generated Javadoc
@@ -7,9 +10,7 @@ package com.base.RenderingEngine.mesh;
 public class Polygon extends Mesh
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1920519682535643817L;
 
 	/**

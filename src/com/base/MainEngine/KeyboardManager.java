@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.base.MainEngine;
 
 import org.lwjgl.glfw.GLFW;
@@ -18,7 +21,8 @@ public class KeyboardManager extends GLFWKeyCallback
 	 * Poll a key code.
 	 *
 	 * @param keyCode
-	 *            the key code
+	 *            the GLFW key code
+	 *            
 	 * @return true, if key is pressed
 	 */
 	public static boolean pollKey(int keyCode)
