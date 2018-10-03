@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.RenderingEngine.mesh;
 
@@ -63,8 +63,8 @@ public class Rectangle extends Mesh
 		float halfXLength = this.xLength / 2f;
 		float halfYLength = this.yLength / 2f;
 
-		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-halfXLength, halfYLength), new Vector2f(0, this.yLength)), new Vertex(new Vector2f(-halfXLength, -halfYLength), new Vector2f(0, 0)),
-				new Vertex(new Vector2f(halfXLength, -halfYLength), new Vector2f(this.xLength, 0)), new Vertex(new Vector2f(halfXLength, halfYLength), new Vector2f(this.xLength, this.yLength))}, new int[]{0, 1, 2, 0, 2, 3});
+		this.bufferVertices(new Vertex[]{new Vertex(new Vector2f(-halfXLength, halfYLength), new Vector2f(0, 1)), new Vertex(new Vector2f(-halfXLength, -halfYLength), new Vector2f(0, 0)),
+				new Vertex(new Vector2f(halfXLength, -halfYLength), new Vector2f(1, 0)), new Vertex(new Vector2f(halfXLength, halfYLength), new Vector2f(1, 1))}, new int[]{0, 1, 2, 0, 2, 3});
 	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.MainEngine;
 
@@ -9,6 +9,10 @@ import com.base.MainEngine.scene.Camera;
 import com.base.MainEngine.scene.Scene;
 import com.base.MainEngine.scene.sceneloader.SceneImporter;
 import com.base.RenderingEngine.RenderingEngine;
+import com.base.RenderingEngine.Texture;
+import com.base.RenderingEngine.mesh.Mesh;
+import com.base.RenderingEngine.mesh.Rectangle;
+import com.base.RenderingEngine.shader.CombineShader;
 import com.base.opengl.GLFWManager;
 import com.base.opengl.OpenGLManager;
 import com.base.opengl.Window;
@@ -21,83 +25,67 @@ public class MainEngine
 {
 
 	/** The length. */
-	private int LENGTH = 1280;
+	public static final int WIDTH = 1280;
 
 	/** The width. */
-	private int WIDTH = 720;
+	public static final int HEIGHT = 720;
 
 	/** The window. */
-	private Window window;
+	private static Window window;
 
 	/** The scene. */
-	private Scene scene;
+	private static Scene scene;
 
 	/** The render engine. */
-	private RenderingEngine renderEngine;
+	private static RenderingEngine renderEngine;
 
 	/** The camera. */
-	private Camera camera;
+	private static Camera camera;
 
-	/**
-	 * Instantiates a new main engine.\ The main engine controls all of the
-	 * other parts of the gameengine. It loads the audio, physics and rendering
-	 * engine as well as the the scene graph.
-	 */
-	public MainEngine()
-	{
-		this.init(null);
-	}
-	
-	/**
-	 * Instantiates a new main engine.
-	 *
-	 * @param filename the filename
-	 */
-	public MainEngine(String filename)
-	{
-		this.init(filename);
-	}
+	private static Mesh displayMesh;
+
+	private static CombineShader combineShader;
 
 	/**
 	 * Starts the engine.
 	 */
-	public void start()
+	public static void start()
 	{
-		this.loop();
+		loop();
 	}
 
 	/**
 	 * Stops the engine. Runs the clean up procedure for the engine.
 	 */
-	public void stop()
+	public static void stop()
 	{
-		this.cleanUp();
+		cleanUp();
 		System.exit(0);
 	}
 
 	/**
 	 * The main game loop.
 	 */
-	private void loop()
+	private static void loop()
 	{
-		float delta = 0;
+		double delta = 0;
 		float tTime = 0;
 		int frameCount = 0;
-		while(!this.window.isCloseRequested())
+		while(!window.isCloseRequested())
 		{
-			float startTime = System.nanoTime();
+			double startTime = System.nanoTime();
 			OpenGLManager.clearScreen();
 
 			// TODO: update input engine? maybe
-			this.scene.input(delta, this);
+			scene.input(delta);
 			if(KeyboardManager.pollKey(GLFW.GLFW_KEY_ESCAPE))
 			{
-				this.window.closeWindow();
-				this.stop();
+				window.closeWindow();
+				stop();
 			}
 
 			// update Objects(Scene)
-			this.scene.update(delta, this);
+			scene.update(delta);
 
 			// TODO: update Physics engine
 
@@ -105,16 +93,44 @@ public class MainEngine
 			// this.audioEngine.updateListener(camera.getTransform().getTranslation());
 
 			// update rendering engine(Render)
-			this.scene.render(this);
 
-			this.window.swapBuffers();
+			// Clear all of the framebuffers
+			renderEngine.clear();
+
+			scene.render();
+
+			renderEngine.renderLights();
+
+			// Combine All of the buffers
+
+			// Combine will multiply diffuse with the lighting texture(Shadow
+			// and light)
+			Texture diffuse = renderEngine.getDiffuseBuffer().getTexture();
+			Texture lighting = renderEngine.getLightRenderer().getCombinedTexture();
+
+			// Bind the textures
+			combineShader.bind();
+
+			lighting.bind(1);
+			diffuse.bind(0);
+
+			displayMesh.draw();
+
+			lighting.unbind();
+			diffuse.unbind();
+
+			combineShader.unbind();
+
+			// Draw the window
+			window.swapBuffers();
 			frameCount++;
 
-			delta = (System.nanoTime() - startTime) / 1000000000f;
+			delta = (System.nanoTime() - startTime) / 1000000000.0;
 			tTime += delta;
 			if(tTime >= 1)
 			{
 				System.out.println(frameCount);
+				System.out.println(delta);
 				tTime = 0;
 				frameCount = 0;
 			}
@@ -124,34 +140,43 @@ public class MainEngine
 	/**
 	 * Inits the engine with a window, opengl, a scene and a camera.
 	 *
-	 * @param filename the filename
+	 * @param filename
+	 *            the filename
 	 */
-	private void init(String filename)
+	public static void init(String filename)
 	{
 		GLFWManager.initGLFW();
-		this.window = Window.createWindow(this.LENGTH, this.WIDTH, "Test 2D Game");
-		this.window.makeWindowCurrent();
+		window = Window.createWindow(WIDTH, HEIGHT, "Test 2D Game");
+		window.makeWindowCurrent();
 
-		OpenGLManager.initOpenGL(this.window);
+		OpenGLManager.initOpenGL(window);
 		if(filename == null)
-			this.scene = new Scene();
+		{
+			scene = new Scene();
+		}
 		else
-			this.scene = SceneImporter.importScene(filename);
-		this.camera = new Camera(1, -1, -1, 1, -10, 10, ((float) this.LENGTH / (float) this.WIDTH));
-		this.scene.addNode(this.camera);
-		this.renderEngine = new RenderingEngine(this.camera);
+		{
+			scene = SceneImporter.importScene(filename);
+		}
+		camera = new Camera(1, -1, -1, 1, -10, 10, ((float) WIDTH / (float) HEIGHT));
+		// camera.addComponent(new KeyboardInputComponent(new Vector2f(1, 1)));
+		scene.addNode(camera);
+		renderEngine = new RenderingEngine(camera);
 
-		GLFW.glfwSetKeyCallback(this.window.getId(), new KeyboardManager());
-		GLFW.glfwSetMouseButtonCallback(this.window.getId(), new MouseButtonManager());
-		GLFW.glfwSetCursorPosCallback(this.window.getId(), new MouseManager());
+		GLFW.glfwSetKeyCallback(window.getId(), new KeyboardManager());
+		GLFW.glfwSetMouseButtonCallback(window.getId(), new MouseButtonManager());
+		GLFW.glfwSetCursorPosCallback(window.getId(), new MouseManager());
+
+		displayMesh = new Rectangle(2, 2);
+		combineShader = new CombineShader();
 	}
 
 	/**
 	 * Cleans up. Destroys all objects and pointers
 	 */
-	private void cleanUp()
+	private static void cleanUp()
 	{
-		this.window.destroy();
+		window.destroy();
 		GLFWManager.destroyGLFW();
 	}
 
@@ -166,7 +191,7 @@ public class MainEngine
 	@Override
 	protected void finalize() throws Throwable
 	{
-		this.cleanUp();
+		cleanUp();
 	}
 
 	/**
@@ -174,9 +199,9 @@ public class MainEngine
 	 *
 	 * @return the window
 	 */
-	public Window getWindow()
+	public static Window getWindow()
 	{
-		return this.window;
+		return window;
 	}
 
 	/**
@@ -184,9 +209,9 @@ public class MainEngine
 	 *
 	 * @return the scene
 	 */
-	public Scene getScene()
+	public static Scene getScene()
 	{
-		return this.scene;
+		return scene;
 	}
 
 	/**
@@ -194,8 +219,18 @@ public class MainEngine
 	 *
 	 * @return the render engine
 	 */
-	public RenderingEngine getRenderEngine()
+	public static RenderingEngine getRenderEngine()
 	{
-		return this.renderEngine;
+		return renderEngine;
+	}
+
+	public static Camera getCamera()
+	{
+		return camera;
+	}
+
+	public static Mesh getDisplayMesh()
+	{
+		return displayMesh;
 	}
 }

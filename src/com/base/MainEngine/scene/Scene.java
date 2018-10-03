@@ -1,12 +1,10 @@
 /*
- * 
+ *
  */
 package com.base.MainEngine.scene;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import com.base.MainEngine.MainEngine;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,22 +26,22 @@ public class Scene implements Serializable
 		this.setRoot(new Node()
 		{
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void input(float delta, MainEngine engine)
+			public void input(double delta)
 			{
 			}
 
 			@Override
-			public void render(MainEngine engine)
+			public void render()
 			{
 			}
 
 			@Override
-			public void update(float delta, MainEngine engine)
+			public void update(double delta)
 			{
 			}
 		});
@@ -68,9 +66,9 @@ public class Scene implements Serializable
 	 * @param engine
 	 *            the engine
 	 */
-	public void input(float delta, MainEngine engine)
+	public void input(double delta)
 	{
-		this.getRoot().inputAll(delta, engine);
+		this.getRoot().inputAll(delta);
 	}
 
 	/**
@@ -79,9 +77,9 @@ public class Scene implements Serializable
 	 * @param engine
 	 *            the engine
 	 */
-	public void render(MainEngine engine)
+	public void render()
 	{
-		this.getRoot().renderAll(engine);
+		this.getRoot().renderAll();
 	}
 
 	/**
@@ -92,9 +90,9 @@ public class Scene implements Serializable
 	 * @param engine
 	 *            the engine
 	 */
-	public void update(float delta, MainEngine engine)
+	public void update(double delta)
 	{
-		this.getRoot().updateAll(delta, engine);
+		this.getRoot().updateAll(delta);
 	}
 
 	/**
@@ -127,7 +125,7 @@ public class Scene implements Serializable
 	{
 		this.root = root;
 	}
-	
+
 	/**
 	 * Reinitializes the scene after loading it from a saved scene
 	 */

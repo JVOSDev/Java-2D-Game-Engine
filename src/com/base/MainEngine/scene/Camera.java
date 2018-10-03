@@ -1,11 +1,9 @@
 /*
- * 
+ *
  */
 package com.base.MainEngine.scene;
 
 import org.joml.Matrix4f;
-
-import com.base.MainEngine.MainEngine;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -117,33 +115,33 @@ public class Camera extends Node
 	 * com.base.MainEngine.MainEngine)
 	 */
 	@Override
-	public void input(float delta, MainEngine engine)
+	public void input(double delta)
 	{
-//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_D))
-//		{
-//			this.transform.translate(new Vector2f(1f * delta, 0));
-//		}
-//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_A))
-//		{
-//			this.transform.translate(new Vector2f(-1f * delta, 0));
-//		}
-//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_W))
-//		{
-//			this.transform.translate(new Vector2f(0, -1f * delta));
-//		}
-//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_S))
-//		{
-//			this.transform.translate(new Vector2f(0, 1f * delta));
-//		}
-//
-//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_LEFT))
-//		{
-//			this.transform.setRotation(this.transform.getRotation() + delta);
-//		}
-//		if(KeyboardManager.pollKey(GLFW.GLFW_KEY_RIGHT))
-//		{
-//			this.transform.setRotation(this.transform.getRotation() - delta);
-//		}
+		// if(KeyboardManager.pollKey(GLFW.GLFW_KEY_D))
+		// {
+		// this.transform.translate(new Vector2f(1f * delta, 0));
+		// }
+		// if(KeyboardManager.pollKey(GLFW.GLFW_KEY_A))
+		// {
+		// this.transform.translate(new Vector2f(-1f * delta, 0));
+		// }
+		// if(KeyboardManager.pollKey(GLFW.GLFW_KEY_W))
+		// {
+		// this.transform.translate(new Vector2f(0, -1f * delta));
+		// }
+		// if(KeyboardManager.pollKey(GLFW.GLFW_KEY_S))
+		// {
+		// this.transform.translate(new Vector2f(0, 1f * delta));
+		// }
+		//
+		// if(KeyboardManager.pollKey(GLFW.GLFW_KEY_LEFT))
+		// {
+		// this.transform.setRotation(this.transform.getRotation() + delta);
+		// }
+		// if(KeyboardManager.pollKey(GLFW.GLFW_KEY_RIGHT))
+		// {
+		// this.transform.setRotation(this.transform.getRotation() - delta);
+		// }
 
 	}
 
@@ -154,7 +152,7 @@ public class Camera extends Node
 	 * com.base.MainEngine.scene.Node#render(com.base.MainEngine.MainEngine)
 	 */
 	@Override
-	public void render(MainEngine engine)
+	public void render()
 	{
 	}
 
@@ -165,7 +163,7 @@ public class Camera extends Node
 	 * com.base.MainEngine.MainEngine)
 	 */
 	@Override
-	public void update(float delta, MainEngine engine)
+	public void update(double delta)
 	{
 	}
 

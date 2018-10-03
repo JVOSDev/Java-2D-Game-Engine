@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.MainEngine.scene.sceneloader;
 
@@ -16,11 +16,12 @@ import com.base.MainEngine.scene.Scene;
  */
 public class SceneImporter
 {
-	
+
 	/**
 	 * Imports a scene from a file. Automatically initializes everything saved.
 	 *
-	 * @param filename the filename
+	 * @param filename
+	 *            the filename
 	 * @return the loaded scene
 	 */
 	public static Scene importScene(String filename)
@@ -28,7 +29,7 @@ public class SceneImporter
 		try
 		{
 			ObjectInputStream os = new ObjectInputStream(new FileInputStream(filename));
-			Scene s = (Scene)os.readObject();
+			Scene s = (Scene) os.readObject();
 			s.reInit();
 			os.close();
 			return s;

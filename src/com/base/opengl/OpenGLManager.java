@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.opengl;
 
@@ -42,6 +42,7 @@ public class OpenGLManager
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
 		GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GL11.GL_FALSE);
+		GLFW.glfwSwapInterval(1);
 	}
 
 	/**

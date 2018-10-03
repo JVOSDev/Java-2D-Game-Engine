@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.RenderingEngine.mesh;
 
@@ -29,7 +29,8 @@ public class Circle extends Mesh
 	 * @param radius
 	 *            the radius
 	 * @param resolution
-	 *            the resolution of the circle, essential the number of edges to generate
+	 *            the resolution of the circle, essential the number of edges to
+	 *            generate
 	 */
 	public Circle(float radius, int resolution)
 	{
@@ -39,7 +40,8 @@ public class Circle extends Mesh
 	}
 
 	/**
-	 * Instantiates a new circle with a radius of 1 and a resolution of 50 triangles.
+	 * Instantiates a new circle with a radius of 1 and a resolution of 50
+	 * triangles.
 	 */
 	public Circle()
 	{

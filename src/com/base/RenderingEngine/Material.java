@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.RenderingEngine;
 
@@ -89,7 +89,7 @@ public class Material implements Serializable
 	{
 		this.diffTexture = texture;
 	}
-	
+
 	/**
 	 * Re init.
 	 */

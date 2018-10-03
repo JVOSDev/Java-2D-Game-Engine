@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.RenderingEngine.shader;
 
@@ -66,6 +66,28 @@ public class Shader
 		this.addUniform(TRANSFORM_MATRIX);
 		this.addUniform(MATERIAL_COLOR);
 		this.addUniform(PROJECTION_MATRIX);
+	}
+
+	protected Shader(String vertexFilename, String fragFilename, int i, String... uniforms)
+	{
+		this.uniformLocations = new HashMap<>();
+		this.program = GL20.glCreateProgram();
+
+		if(this.program == 0)
+		{
+			System.err.println("Shader creation failed: Could not find valid memory location in constructor");
+			System.exit(1);
+		}
+
+		this.loadShader(GL20.GL_VERTEX_SHADER, Utils.loadTextFile(vertexFilename));
+		this.loadShader(GL20.GL_FRAGMENT_SHADER, Utils.loadTextFile(fragFilename));
+
+		this.compile();
+
+		for(String s : uniforms)
+		{
+			this.addUniform(s);
+		}
 	}
 
 	/**
@@ -197,6 +219,16 @@ public class Shader
 	public void updateUniformVector2f(Vector2f vec, String uniform)
 	{
 		GL20.glUniform2f(this.uniformLocations.get(uniform), vec.x, vec.y);
+	}
+
+	public void updateUniform1f(float f, String uniform)
+	{
+		GL20.glUniform1f(this.uniformLocations.get(uniform), f);
+	}
+
+	public void updateUniform1i(int f, String uniform)
+	{
+		GL20.glUniform1i(this.uniformLocations.get(uniform), f);
 	}
 
 	/**

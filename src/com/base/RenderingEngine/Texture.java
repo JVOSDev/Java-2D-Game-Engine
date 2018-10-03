@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.RenderingEngine;
 
@@ -32,7 +32,7 @@ public class Texture implements Serializable
 
 	/** The location of the texture object (eg. TEXTURE0, TEXTURE17). */
 	private transient int location;
-	
+
 	/** The filename. */
 	private String filename;
 
@@ -74,12 +74,25 @@ public class Texture implements Serializable
 		}
 	}
 
+	public Texture(int location)
+	{
+		this.id = GL11.glGenTextures();
+		this.location = location;
+		this.filename = "";
+	}
+
 	/**
 	 * Binds the texture to be used.
 	 */
 	public void bind()
 	{
 		GL13.glActiveTexture(GL13.GL_TEXTURE0 + this.location);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.id);
+	}
+
+	public void bind(int location)
+	{
+		GL13.glActiveTexture(GL13.GL_TEXTURE0 + location);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.id);
 	}
 
@@ -117,18 +130,33 @@ public class Texture implements Serializable
 	 */
 	public String getFilename()
 	{
-		return filename;
+		return this.filename;
 	}
-	
+
+	public int getId()
+	{
+		return this.id;
+	}
+
+	public int getLocation()
+	{
+		return this.location;
+	}
+
 	/**
 	 * Re init.
 	 */
 	public void reInit()
 	{
+		if(this.filename.equals(""))
+		{
+			return;
+		}
+
 		PNGDecoder decoder = null;
 		try
 		{
-			decoder = new PNGDecoder(new FileInputStream(new File(filename)));
+			decoder = new PNGDecoder(new FileInputStream(new File(this.filename)));
 			ByteBuffer buf = ByteBuffer.allocateDirect(4 * decoder.getWidth() * decoder.getHeight());
 			decoder.decode(buf, decoder.getWidth() * 4, Format.RGBA);
 			buf.flip();

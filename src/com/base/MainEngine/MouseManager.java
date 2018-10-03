@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.MainEngine;
 
@@ -26,7 +26,7 @@ public class MouseManager extends GLFWCursorPosCallback
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.lwjgl.glfw.GLFWCursorPosCallbackI#invoke(long, double, double)
 	 */
 	@Override

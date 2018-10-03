@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.RenderingEngine.mesh;
 
@@ -46,10 +46,10 @@ public abstract class Mesh implements Serializable
 
 	/** The size of the mesh data. */
 	protected transient int size;
-	
+
 	/** The vertices. */
 	private Vertex[] vertices;
-	
+
 	/** The indices. */
 	private int[] indices;
 
@@ -63,7 +63,7 @@ public abstract class Mesh implements Serializable
 
 		this.vbo = glGenBuffers();
 		this.ibo = glGenBuffers();
-		if(vertices != null && indices != null)
+		if((this.vertices != null) && (this.indices != null))
 		{
 			this.bufferVertices();
 		}
@@ -72,7 +72,7 @@ public abstract class Mesh implements Serializable
 			this.initVertices();
 		}
 	}
-	
+
 	/**
 	 * Re init.
 	 */
@@ -142,7 +142,7 @@ public abstract class Mesh implements Serializable
 	{
 		this.vertices = vertices;
 		this.indices = indices;
-		
+
 		glBindVertexArray(this.vao);
 
 		glBindBuffer(GL_ARRAY_BUFFER, this.vbo);
@@ -160,13 +160,13 @@ public abstract class Mesh implements Serializable
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
-	
+
 	/**
 	 * Buffer vertices.
 	 */
 	private void bufferVertices()
 	{
-		this.bufferVertices(vertices, indices);
+		this.bufferVertices(this.vertices, this.indices);
 	}
 
 	/**
@@ -201,7 +201,7 @@ public abstract class Mesh implements Serializable
 	 */
 	public Vertex[] getVertices()
 	{
-		return vertices;
+		return this.vertices;
 	}
 
 	/**
@@ -211,7 +211,7 @@ public abstract class Mesh implements Serializable
 	 */
 	public int[] getIndices()
 	{
-		return indices;
+		return this.indices;
 	}
 
 	/*

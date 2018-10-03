@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.base.MainEngine.scene;
 
@@ -49,7 +49,7 @@ public class Entity extends Node implements Serializable
 	public Entity(Mesh mesh)
 	{
 		this.mesh = mesh;
-		this.material = new Material(new Texture("./res/textures/glass.png", 0));
+		this.material = new Material(new Texture("./res/textures/white.png", 0));
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class Entity extends Node implements Serializable
 	 * com.base.MainEngine.MainEngine)
 	 */
 	@Override
-	public void input(float delta, MainEngine engine)
+	public void input(double delta)
 	{
 
 	}
@@ -81,9 +81,9 @@ public class Entity extends Node implements Serializable
 	 * com.base.MainEngine.scene.Node#render(com.base.MainEngine.MainEngine)
 	 */
 	@Override
-	public void render(MainEngine engine)
+	public void render()
 	{
-		engine.getRenderEngine().renderEntity(this, engine);
+		MainEngine.getRenderEngine().renderEntity(this);
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class Entity extends Node implements Serializable
 	 * com.base.MainEngine.MainEngine)
 	 */
 	@Override
-	public void update(float delta, MainEngine engine)
+	public void update(double delta)
 	{
 
 	}
@@ -129,8 +129,10 @@ public class Entity extends Node implements Serializable
 	{
 		this.material = material;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see com.base.MainEngine.scene.Node#reInit()
 	 */
 	@Override
